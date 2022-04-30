@@ -5,7 +5,7 @@ var db = require('../db');
 var ensureLoggedIn = ensureLogIn();
 
 function fetchTodos(req, res, next) {
-  db.all('SELECT rowid AS id, * FROM todos WHERE owner_id = ?', [
+  db.all('SELECT rowid AS id, * FROM houses WHERE owner_id = ?', [
     req.user.id,
     req.user.first_name
   ], function(err, rows) {
