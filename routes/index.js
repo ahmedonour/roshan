@@ -56,7 +56,7 @@ router.post('/', ensureLoggedIn, function(req, res, next) {
   if (req.body.title !== '') { return next(); }
   return res.redirect('/' + (req.body.filter || ''));
 }, function(req, res, next) {
-  db.run('INSERT INTO todos (owner_id, title, completed) VALUES (?, ?, ?)', [
+  db.run('INSERT INTO houses (owner_id, title, completed) VALUES (?, ?, ?)', [
     req.user.id,
     req.body.title,
     req.body.completed == true ? 1 : null
@@ -66,58 +66,58 @@ router.post('/', ensureLoggedIn, function(req, res, next) {
   });
 });
 
-router.post('/:id(\\d+)', ensureLoggedIn, function(req, res, next) {
-  req.body.title = req.body.title.trim();
-  next();
-}, function(req, res, next) {
-  if (req.body.title !== '') { return next(); }
-  db.run('DELETE FROM todos WHERE rowid = ? AND owner_id = ?', [
-    req.params.id,
-    req.user.id
-  ], function(err) {
-    if (err) { return next(err); }
-    return res.redirect('/' + (req.body.filter || ''));
-  });
-}, function(req, res, next) {
-  db.run('UPDATE todos SET title = ?, completed = ? WHERE rowid = ? AND owner_id = ?', [
-    req.body.title,
-    req.body.completed !== undefined ? 1 : null,
-    req.params.id,
-    req.user.id
-  ], function(err) {
-    if (err) { return next(err); }
-    return res.redirect('/' + (req.body.filter || ''));
-  });
-});
-
-router.post('/:id(\\d+)/delete', ensureLoggedIn, function(req, res, next) {
-  db.run('DELETE FROM todos WHERE rowid = ? AND owner_id = ?', [
-    req.params.id,
-    req.user.id
-  ], function(err) {
-    if (err) { return next(err); }
-    return res.redirect('/' + (req.body.filter || ''));
-  });
-});
-
-router.post('/toggle-all', ensureLoggedIn, function(req, res, next) {
-  db.run('UPDATE todos SET completed = ? WHERE owner_id = ?', [
-    req.body.completed !== undefined ? 1 : null,
-    req.user.id
-  ], function(err) {
-    if (err) { return next(err); }
-    return res.redirect('/' + (req.body.filter || ''));
-  });
-});
-
-router.post('/clear-completed', ensureLoggedIn, function(req, res, next) {
-  db.run('DELETE FROM todos WHERE owner_id = ? AND completed = ?', [
-    req.user.id,
-    1
-  ], function(err) {
-    if (err) { return next(err); }
-    return res.redirect('/' + (req.body.filter || ''));
-  });
-});
+//router.post('/:id(\\d+)', ensureLoggedIn, function(req, res, next) {
+//  req.body.title = req.body.title.trim();
+//  next();
+//}, function(req, res, next) {
+//  if (req.body.title !== '') { return next(); }
+//  db.run('DELETE FROM todos WHERE rowid = ? AND owner_id = ?', [
+//    req.params.id,
+//    req.user.id
+//  ], function(err) {
+//    if (err) { return next(err); }
+//    return res.redirect('/' + (req.body.filter || ''));
+//  });
+//}, function(req, res, next) {
+//  db.run('UPDATE todos SET title = ?, completed = ? WHERE rowid = ? AND owner_id = ?', [
+//    req.body.title,
+//    req.body.completed !== undefined ? 1 : null,
+//    req.params.id,
+//    req.user.id
+//  ], function(err) {
+//    if (err) { return next(err); }
+//    return res.redirect('/' + (req.body.filter || ''));
+//  });
+//});
+//
+//router.post('/:id(\\d+)/delete', ensureLoggedIn, function(req, res, next) {
+//  db.run('DELETE FROM todos WHERE rowid = ? AND owner_id = ?', [
+//    req.params.id,
+//    req.user.id
+//  ], function(err) {
+//    if (err) { return next(err); }
+//    return res.redirect('/' + (req.body.filter || ''));
+//  });
+//});
+//
+//router.post('/toggle-all', ensureLoggedIn, function(req, res, next) {
+//  db.run('UPDATE todos SET completed = ? WHERE owner_id = ?', [
+//    req.body.completed !== undefined ? 1 : null,
+//    req.user.id
+//  ], function(err) {
+//    if (err) { return next(err); }
+//    return res.redirect('/' + (req.body.filter || ''));
+//  });
+//});
+//
+//router.post('/clear-completed', ensureLoggedIn, function(req, res, next) {
+//  db.run('DELETE FROM todos WHERE owner_id = ? AND completed = ?', [
+//    req.user.id,
+//    1
+//  ], function(err) {
+//    if (err) { return next(err); }
+//    return res.redirect('/' + (req.body.filter || ''));
+//  });
+//});
 // Get Sell Page
 module.exports = router;
