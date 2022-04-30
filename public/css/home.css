@@ -164,7 +164,7 @@ header a.button {
 	background-color: var(--clr-orange);
 	display: flex;
 	flex-direction: row;
-	justify-content: space-evenly;
+	justify-content: space-around;
 	align-items: center;
 	
 }
@@ -177,6 +177,7 @@ header a.button {
 	justify-content: space-around;
 	align-items: center;
 	background: rgba(255, 255, 255, 0.307);
+	-webkit-backdrop-filter: blur(10px);
 	backdrop-filter: blur(10px);
 	border-radius: 5pc;
 	box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
@@ -238,7 +239,9 @@ header a.button {
 		width: 100vw;
 		height: 100vh;
 		background-color: rgba(255, 255, 255, 0.473);
+		-webkit-backdrop-filter: blur(10px);
 		backdrop-filter: blur(10px);
+
 		transition: all 550ms;
 	}
 	header label{
@@ -262,6 +265,7 @@ header a.button {
 		font-size: 1rem;
 		padding: 0rem;
 		border-radius: 50px;
+		-webkit-backdrop-filter: blur(10px);
 		backdrop-filter: blur(3px);
 		z-index: 3;
 	}
@@ -312,6 +316,7 @@ header a.button {
 		height: 70vh;
 		padding: 1rem;
 		border-radius: 50px;
+		-webkit-backdrop-filter: blur(10px);
 		backdrop-filter: blur(3px);
 	}
 	.centerDiv p{
