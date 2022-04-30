@@ -120,11 +120,4 @@ router.post('/clear-completed', ensureLoggedIn, function(req, res, next) {
   });
 });
 // Get Sell Page
-router.get('/sell', function(req, res, next) {
-  if (!req.user) { return res.render('home'); }
-  next();
-}, fetchTodos, function(req, res, next) {
-  res.locals.filter = null;
-  res.render('sell', { user: req.user });
-});
 module.exports = router;
