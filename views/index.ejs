@@ -7,90 +7,122 @@
 		<link rel="stylesheet" href="/css/base.css">
 		<link rel="stylesheet" href="/css/index.css">
 		<link rel="stylesheet" href="/css/app.css">
+		<link rel="shortcut icon" href="favicon-0.png" type="image/png">
 	</head>
 	<body>
-		<section class="todoapp">
-			<nav class="nav">
-				<ul>
-					<li class="user"><%= user.username %></li>
-					<li>
-						<form action="/logout" method="post">
-							<button class="logout" type="submit">Sign out</button>
-							<input type="hidden" name="_csrf" value="<%= csrfToken %>">
-						</form>
-					</li>
-				</ul>
-			</nav>
-			<header class="header">
-				<h1>Roshan</h1>
-				<form action="/" method="post">
-					<input class="new-todo" name="discription" placeholder="What needs to be done?" autofocus>
-					<input type="file" name="file" id="file" placeholder="Upload your home photo" autofocus>
-					<% if (filter) { %>
-					<input type="hidden" name="filter" value="<%= filter %>"/>
-					<% } %>
-					<input type="hidden" name="_csrf" value="<%= csrfToken %>">
+		<nav>
+			<div class="logo">
+				<img src="/img/Roshan-logo.png" alt="">
+			</div>
+			<div class="nav-btn">
+				<li><a href="/logout">Logout</a></li>
+				<li><a href="/profile">Profile</a></li>
+			</div>
+		</nav>
+		<section>
+			<div class="sidebar">
+				<li><a href="#">My List</a></li>
+				<li><a href="#">Buy</a></li>
+				<li><a href="#">Rent</a></li>
+				<li><a href="#">Sell</a></li>
+			</div>
+			<div class="house-list">
+				<h1>House List</h1>
+				<form action="#">
+					<input type="text" name="location" readonly>
+					<input type="text" name="space" readonly>
+					<input type="text" name="rooms" readonly>
+					<input type="text" name="status" readonly>
+					<input type="text" name="price" readonly>
+					
 				</form>
-			</header>
-			<% if (activeCount + completedCount > 0) { %>
-			<section class="main">
-				<form action="/toggle-all" method="post">
-					<input id="toggle-all" class="toggle-all" type="checkbox" name="completed" <%- activeCount == 0 ? 'checked' : '' %> onchange="this.form.submit();">
-					<label for="toggle-all">Mark all as complete</label>
-					<input type="hidden" name="_csrf" value="<%= csrfToken %>">
-				</form>
-				<ul class="todo-list">
-					<% todos.forEach(function(todo) { %>
-					<li <%- todo.completed ? 'class="completed"' : '' %>>
-						<form action="<%= todo.url %>" method="post">
-							<div class="view">
-								<input class="toggle" type="checkbox" name="completed" <%- todo.completed ? 'checked' : '' %> onchange="this.form.submit();">
-								<label ondblclick="this.closest('li').className = this.closest('li').className + ' editing'; this.closest('li').querySelector('input.edit').focus(); this.closest('li').querySelector('input.edit').value = ''; this.closest('li').querySelector('input.edit').value = '<%= todo.title %>';"><%= todo.title %></label>
-								<button class="destroy" form="delete-<%= todo.id %>"></button>
-							</div>
-							<input class="edit" name="title" value="<%= todo.title %>" onkeyup="if (event.keyCode == 27) { this.setAttribute('data-esc', ''); this.closest('li').className = this.closest('li').className.replace('editing', ''); }" onblur="if (this.getAttribute('data-esc') !== null) {  this.removeAttribute('data-esc'); } this.form.submit();">
-							<% if (filter) { %>
-							<input type="hidden" name="filter" value="<%= filter %>"/>
-							<% } %>
-							<input type="hidden" name="_csrf" value="<%= csrfToken %>">
-						</form>
-						<form id="delete-<%= todo.id %>" action="<%= todo.url %>/delete" method="post">
-							<% if (filter) { %>
-							<input type="hidden" name="filter" value="<%= filter %>"/>
-							<% } %>
-							<input type="hidden" name="_csrf" value="<%= csrfToken %>">
-						</form>
-					</li>
-					<% }); %>
-				</ul>
-			</section>
-			<% } %>
-			<% if (activeCount + completedCount > 0) { %>
-			<footer class="footer">
-				<span class="todo-count"><strong><%= activeCount %></strong> <%= pluralize('item', activeCount) %> left</span>
-				<ul class="filters">
-					<li>
-						<a <%- !filter ? 'class="selected"' : '' %> href="/">All</a>
-					</li>
-					<li>
-						<a <%- filter == 'active' ? 'class="selected"' : '' %> href="/active">Active</a>
-					</li>
-					<li>
-						<a <%- filter == 'completed' ? 'class="selected"' : '' %> href="/completed">Completed</a>
-					</li>
-				</ul>
-				<% if (completedCount > 0) { %>
-				<form action="/clear-completed" method="post">
-					<button class="clear-completed">Clear completed</button>
-					<% if (filter) { %>
-					<input type="hidden" name="filter" value="<%= filter %>"/>
-					<% } %>
-					<input type="hidden" name="_csrf" value="<%= csrfToken %>">
-				</form>
-				<% } %>
-			</footer>
-			<% } %>
+			</div>
 		</section>
-		<a href="/sell">sell</a>
+		<!-- <div class="leftout">
+			<section class="todoapp">
+				<nav class="nav">
+					<ul>
+						<li class="user"><%= user.username %></li>
+						<li>
+							<form action="/logout" method="post">
+								<button class="logout" type="submit">Sign out</button>
+								<input type="hidden" name="_csrf" value="<%= csrfToken %>">
+							</form>
+						</li>
+					</ul>
+				</nav>
+				<header class="header">
+					<h1>Roshan</h1>
+					<form action="/" method="post">
+						<input class="new-todo" name="discription" placeholder="What needs to be done?" autofocus>
+						<input type="file" name="file" id="file" placeholder="Upload your home photo" autofocus>
+						<% if (filter) { %>
+						<input type="hidden" name="filter" value="<%= filter %>"/>
+						<% } %>
+						<input type="hidden" name="_csrf" value="<%= csrfToken %>">
+					</form>
+				</header>
+				<% if (activeCount + completedCount > 0) { %>
+				<section class="main">
+					<form action="/toggle-all" method="post">
+						<input id="toggle-all" class="toggle-all" type="checkbox" name="completed" <%- activeCount == 0 ? 'checked' : '' %> onchange="this.form.submit();">
+						<label for="toggle-all">Mark all as complete</label>
+						<input type="hidden" name="_csrf" value="<%= csrfToken %>">
+					</form>
+					<ul class="todo-list">
+						<% todos.forEach(function(todo) { %>
+						<li <%- todo.completed ? 'class="completed"' : '' %>>
+							<form action="<%= todo.url %>" method="post">
+								<div class="view">
+									<input class="toggle" type="checkbox" name="completed" <%- todo.completed ? 'checked' : '' %> onchange="this.form.submit();">
+									<label ondblclick="this.closest('li').className = this.closest('li').className + ' editing'; this.closest('li').querySelector('input.edit').focus(); this.closest('li').querySelector('input.edit').value = ''; this.closest('li').querySelector('input.edit').value = '<%= todo.title %>';"><%= todo.title %></label>
+									<button class="destroy" form="delete-<%= todo.id %>"></button>
+								</div>
+								<input class="edit" name="title" value="<%= todo.title %>" onkeyup="if (event.keyCode == 27) { this.setAttribute('data-esc', ''); this.closest('li').className = this.closest('li').className.replace('editing', ''); }" onblur="if (this.getAttribute('data-esc') !== null) {  this.removeAttribute('data-esc'); } this.form.submit();">
+								<% if (filter) { %>
+								<input type="hidden" name="filter" value="<%= filter %>"/>
+								<% } %>
+								<input type="hidden" name="_csrf" value="<%= csrfToken %>">
+							</form>
+							<form id="delete-<%= todo.id %>" action="<%= todo.url %>/delete" method="post">
+								<% if (filter) { %>
+								<input type="hidden" name="filter" value="<%= filter %>"/>
+								<% } %>
+								<input type="hidden" name="_csrf" value="<%= csrfToken %>">
+							</form>
+						</li>
+						<% }); %>
+					</ul>
+				</section>
+				<% } %>
+				<% if (activeCount + completedCount > 0) { %>
+				<footer class="footer">
+					<span class="todo-count"><strong><%= activeCount %></strong> <%= pluralize('item', activeCount) %> left</span>
+					<ul class="filters">
+						<li>
+							<a <%- !filter ? 'class="selected"' : '' %> href="/">All</a>
+						</li>
+						<li>
+							<a <%- filter == 'active' ? 'class="selected"' : '' %> href="/active">Active</a>
+						</li>
+						<li>
+							<a <%- filter == 'completed' ? 'class="selected"' : '' %> href="/completed">Completed</a>
+						</li>
+					</ul>
+					<% if (completedCount > 0) { %>
+					<form action="/clear-completed" method="post">
+						<button class="clear-completed">Clear completed</button>
+						<% if (filter) { %>
+						<input type="hidden" name="filter" value="<%= filter %>"/>
+						<% } %>
+						<input type="hidden" name="_csrf" value="<%= csrfToken %>">
+					</form>
+					<% } %>
+				</footer>
+				<% } %>
+			</section>
+			<a href="/sell">sell</a>
+		</div> -->
+	
 	</body>
 </html>

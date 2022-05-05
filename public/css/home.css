@@ -3,8 +3,8 @@
 	--ff-sec : 'DM Serif Display', serif;
 	--ff-therd : 'Abril Fatface';
 	--clr-white : #fff;
-	--clr-black : #000;
-	--clr-orange:#ff7b25;
+	--clr-black : #00d7ff;	
+	--clr-orange:#00d7ff;
 }
 
 
@@ -13,7 +13,7 @@
 	padding: 0;
 }
 html{
-	background-color: var(--clr-orange);
+	background-color: var(--clr-black);
 	width: 100vw;
 	height: 100vh;
 }
@@ -26,7 +26,7 @@ html{
 } */
 /* Nav Bar */
 header{
-	width: 90vw;
+	width: 98vw;
 	height: 100px;
 	display: flex;
 	flex-direction: row;
@@ -74,9 +74,9 @@ header .button:hover {
 header a.button {
 	text-decoration: none;
 }
-.fa-bars-staggered{
+.fa-ellipsis-v{
 	font-size: 2rem;
-	padding: 0rem;
+	padding: 1rem;
 }
 .fa-circle-xmark{
 	position: absolute;
@@ -91,12 +91,12 @@ header a.button {
 	top: 0px;
 }
 .content{
-	width: 90vw;
+	width: 100vw;
 	height: 100vh;
 	margin: 0;
 	padding: 0;
 	display: flex;
-	flex-direction: row;
+	flex-direction: row-reverse;
 	justify-content: center;
 	align-items: center;
 }
@@ -106,7 +106,7 @@ header a.button {
 	top: 20%;
 	left: 65%;*/
 	width: 90vw;
-	height: 65vh;
+	height: 100%;
 	/* background: rgb(255, 255, 255, 0.2);
 	backdrop-filter: blur(10px); */
 	display: flex;
@@ -122,7 +122,7 @@ header a.button {
 	line-height: 1em;
 	width: 70%;
 	height: 40%;
-	font-size: 3.9rem;
+	font-size: 5rem;
 	letter-spacing: 2px;
 	color: var(--clr-white);
 }
@@ -152,13 +152,13 @@ header a.button {
 
 }
 	iframe{
-		z-index: -1;
+
 	}	
 /* Mid Section */
 .mid-section{
-	width: 96vw;
+	width: 100vw;
 	height: 100vh;
-	background-color: var(--clr-orange);
+	background-color: var(--clr-black);
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
@@ -199,7 +199,7 @@ header a.button {
 	border-top: 2px solid var(--clr-white) ;
 	width: 100vw;
 	height: 50vh;
-	background: var(--clr-orange);
+	background: var(--clr-black);
 	color: var(--clr-white);
 	font-family: var(--ff-sec);
 	display: flex;
@@ -218,16 +218,8 @@ header a.button {
 }
 /* For Tablet */
 @media only screen and (max-width:768px) {
-	/* .hero {
-		background-position: center;
-		background-size: cover;
-		background-repeat: no-repeat;
-	} */
-	header{
-		width: 96vw;
-	}
 	header .navbtn{
-		position: absolute;
+		position: fixed;
 		top: -1000px;
 		right: 0;
 		width:100vw;
@@ -241,7 +233,6 @@ header a.button {
 		background-color: rgba(255, 255, 255, 0.473);
 		-webkit-backdrop-filter: blur(10px);
 		backdrop-filter: blur(10px);
-
 		transition: all 550ms;
 	}
 	header label{
@@ -251,7 +242,7 @@ header a.button {
 		font-size: 3rem;
 	}
 	.content{
-		width: 96vw;
+		width: 100vw;
 		height: 100vh;
 		justify-content: center;
 		align-items: center;
@@ -266,17 +257,24 @@ header a.button {
 		border-radius: 50px;
 		-webkit-backdrop-filter: blur(10px);
 		backdrop-filter: blur(3px);
-		z-index: 3;
 	}
-	iframe{
-		height: 100%;
+	.centerDiv h1{
 		width: 100%;
-	}	
+		font-size: 2.5rem;
+	}
+	.centerDiv p{
+		display: none;
+	}
 	.centerDiv button{
 		width: 40%;
 	}
+	iframe{
+		user-zoom: 50%;
+		height: 100%;
+		width: 100%;
+	}	
 	.mid-section{
-		width: 95vw;
+		width: 100vw;
 		height: 220vh;
 		display: flex;
 		flex-direction: column;
@@ -298,9 +296,6 @@ header a.button {
 /*for Mobile*/
 @media only screen and (max-width:480px) {
 	header{
-
-		/* backdrop-filter: blur(10px); */
-		width: 95vw;
 		height: 70px;
 		display: flex;
 		flex-direction: row;
@@ -326,13 +321,8 @@ header a.button {
 	.centerDiv p{
 		display: none;
 	}
-	iframe{
-	
-		z-index: -1;
-	}
 	.mid-section{
 		background: none;
-		height: 220vh;
 		display: flex;
 		flex-direction: column;
 	}
