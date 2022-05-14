@@ -1,0 +1,17 @@
+{
+	"name" : "Roshan",
+	"short_name": "Roshan",
+	"start_url": "/",
+	"icons":[
+		{
+			"src": "img/favicon-0.png",
+			"sizes":"512x512",
+			"type": "image/png",
+			"purpose": "maskable any"
+		}
+	],
+	"theme_color": "#000000",
+	"background_color": "#000000",
+	"display": "fullscreen",
+	"orientation": "portrait"
+}

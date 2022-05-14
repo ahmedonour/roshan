@@ -27,17 +27,36 @@ function fetchTodos(req, res, next) {
 }
 
 var router = express.Router();
-
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  if (!req.user) { return res.render('home'); }
+	  if (!req.user) { return res.render('home'); }
   next();
 }, fetchTodos, function(req, res, next) {
   res.locals.filter = null;
   res.render('index', { user: req.user });
 });
-
-
+/* GET THE LIST OF HOMES*/
+router.get('/homes-list', (res,req) => {
+  const homeList = "SELECT * FROM home WHERE owner_id = ?";
+  db.all(homeList,[
+    req.user.id
+  ],
+  (err , rows) =>{
+    if (err) {
+      return console.error(err.message);
+    }
+    res.render("index/#house-list" , {module: rows})
+  });
+});
+/*ADD NEW HOUSE*/
+router.post('/add-new-house', (res,req) => {
+  db.run('INSERT INTO home (owner_id,Location,for) VALUE( ? , ? , ? )',[
+    req.user.id,
+    req.body.location,
+    req.body.for
+  ]),
+  res.render('index');
+});
 // router.get('/active', ensureLoggedIn, fetchTodos, function(req, res, next) {
 //   res.locals.todos = res.locals.todos.filter(function(todo) { return !todo.completed; });
 //   res.locals.filter = 'active';

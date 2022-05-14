@@ -1,3 +1,13 @@
 {
-    "liveServer.settings.port": 3001
+    "liveServer.settings.port": 3001,
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "Main",
+            "database": "${workspaceFolder:roshan}/var/db/main.db",
+            "group": "roshan"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
 }

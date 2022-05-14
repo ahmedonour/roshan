@@ -95,11 +95,11 @@ router.post('/login/password', passport.authenticate('local', {
   failureMessage: true
 }));
 
-/* POST /logout
+/* GET /logout
  *
  * This route logs the user out.
  */
-router.post('/logout', function(req, res, next) {
+router.get('/logout', function(req, res, next) {
   req.logout();
   res.redirect('/');
 });

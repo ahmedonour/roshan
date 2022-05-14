@@ -3,7 +3,7 @@
 	--ff-sec : 'DM Serif Display', serif;
 	--ff-therd : 'Abril Fatface';
 	--clr-white : #fff;
-	--clr-black : #00d7ff;	
+	--clr-black : #000;	
 	--clr-orange:#00d7ff;
 }
 
@@ -120,8 +120,8 @@ header a.button {
 .centerDiv h1{
 	font-family: var(--ff-therd);
 	line-height: 1em;
+	aspect-ratio: 2/1;
 	width: 70%;
-	height: 40%;
 	font-size: 5rem;
 	letter-spacing: 2px;
 	color: var(--clr-white);
@@ -150,10 +150,7 @@ header a.button {
 	text-decoration: none;
 	color: var(--clr-white);
 
-}
-	iframe{
-
-	}	
+}	
 /* Mid Section */
 .mid-section{
 	width: 100vw;

@@ -7,6 +7,7 @@
 		<!-- <link rel="stylesheet" href="/css/base.css">
 		<link rel="stylesheet" href="/css/index.css"> -->
 		<link rel="stylesheet" href="/css/home.css">
+		<link rel="manifest" href="/manifest.json">
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
@@ -37,12 +38,13 @@
 				<div class="centerDiv">
 					<h1>Your Dream Home is in Your Hand</h1>
 					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde blanditiis error maiores alias quos eligendi itaque omnis hic laudantium obcaecati ullam incidunt, possimus nostrum voluptas. Expedita inventore quaerat ratione labore!</p>
-					<button href="">Get Start</button>
+					<button href="/signup">Get Start</button>
 					<a href="#readmore">Read More  <i class="fa-solid fa-angle-down"></i></a>
 				</div>
 			</div>	
 		</section>
 		<section class="mid-section" id="readmore">
+			<h1>About Us</h1>
 			<div class="about-us">
 				<h1>No Broker's No more !</h1>
 				<p>
@@ -86,8 +88,13 @@
 				</div>
 			</div>
 			<div class="copy-right">
-				Copy Right's For Onodev Company
+				&copy; 2020 - Onodev Company
 			</div>
 		</footer>
+		<script>
+			if ('serviceWorker' in navigator){
+				navigator.serviceWorker.register('/service-worker.js');
+			};
+		</script>
 	</body>
 </html>

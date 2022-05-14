@@ -7,37 +7,65 @@
 		<link rel="stylesheet" href="/css/base.css">
 		<link rel="stylesheet" href="/css/index.css">
 		<link rel="stylesheet" href="/css/app.css">
-		<link rel="shortcut icon" href="favicon-0.png" type="image/png">
+		<link rel="shortcut icon" href="/img/favicon-0.png" type="image/png">
+		<script src="https://kit.fontawesome.com/8a7299c2d2.js" crossorigin="anonymous"></script>
 	</head>
 	<body>
 		<nav>
 			<div class="logo">
-				<img src="/img/Roshan-logo.png" alt="">
+				<img src="/img/Roshan-Logo.png" alt="">
 			</div>
+			<input type="checkbox" name="check" id="check">
+			<label for="check">
+				<i class="fas fa-ellipsis-v"></i>
+			</label>
 			<div class="nav-btn">
+				<label for="check">
+					<i class="fas fa-times-circle"></i>				
+				</label>
 				<li><a href="/logout">Logout</a></li>
 				<li><a href="/profile">Profile</a></li>
 			</div>
 		</nav>
-		<section>
-			<div class="sidebar">
-				<li><a href="#">My List</a></li>
-				<li><a href="#">Buy</a></li>
-				<li><a href="#">Rent</a></li>
-				<li><a href="#">Sell</a></li>
-			</div>
-			<div class="house-list">
-				<h1>House List</h1>
-				<form action="#">
-					<input type="text" name="location" readonly>
-					<input type="text" name="space" readonly>
-					<input type="text" name="rooms" readonly>
-					<input type="text" name="status" readonly>
-					<input type="text" name="price" readonly>
-					
-				</form>
-			</div>
-		</section>
+		<div class="center">
+			
+			<section>
+				<div class="sidebar">
+					<li><button class="chang"><a href="#house-list">My List</a></button></li>
+					<li><button class="chang"><a href="#buy">Buy</a></button></li>
+					<li><button class="chang"><a href="#rent">Rent</a></button></li>
+					<li><button class="chang"><a href="#sell">Sell</a></button></li>
+				</div>
+				<div class="house-list" id="house-list">
+					<h1>House List</h1>
+				
+					<form action="#">
+						
+						<input type="text" name="location" readonly>
+						<input type="text" name="space" readonly>
+						<input type="text" name="rooms" readonly>
+						<input type="text" name="status" readonly>
+						<input type="text" name="price" readonly>
+			
+					</form>
+				</div>
+				<div class="house-list" id="buy">
+					<h1>Buy</h1>
+				</div>
+				<div class="house-list" id="rent">
+					<h1>rent</h1>
+				</div>
+				<div class="house-list" id="sell">
+					<h1>Add New House</h1>
+					<form action="/add-new-house" method="POST">
+						<input type="text" name="location" placeholder="Location">
+						<input type="text" name="for" placeholder="For">
+				<button type="submit">Sign up</button>
+						<input type="submit" value="Go">
+					</form>
+				</div>
+			</section>
+		</div>
 		<!-- <div class="leftout">
 			<section class="todoapp">
 				<nav class="nav">
