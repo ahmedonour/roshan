@@ -1,5 +1,5 @@
 :root{
-	--ff-main : 'Playfair Display', serif;
+	--ff-main : 'Marcellus SC', serif;
 	--ff-sec : 'DM Serif Display', serif;
 	--ff-therd : 'Abril Fatface';
 	--clr-white : #fff;
@@ -35,13 +35,9 @@ header{
 	color: var(--clr-white);
 	z-index: 2;
 }
-header h1{
-	font-family: var(--ff-main);
-	padding: 1rem;
-	font-size: 4rem;
-	font-weight: 600;
-	text-align: center;
-	color: var(--clr-white);
+header img{
+	width: 15%;
+	aspect-ratio: 1/1;
 }
 header input{
 	display: none;

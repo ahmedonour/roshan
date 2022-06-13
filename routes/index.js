@@ -49,12 +49,17 @@ router.get('/homes-list', (res,req) => {
   });
 });
 /*ADD NEW HOUSE*/
-router.post('/add-new-house', (res,req) => {
+router.post('/add-new-house', ensureLoggedIn ,(res,req) => {
+	const loc = req.body.location;
+	const toWhat = req.body.for; 
   db.run('INSERT INTO home (owner_id,Location,for) VALUE( ? , ? , ? )',[
     req.user.id,
     req.body.location,
     req.body.for
-  ]),
+  ],
+  (err) => {
+    if (err) { return console.error(err.message.at)}
+  }),
   res.render('index');
 });
 // router.get('/active', ensureLoggedIn, fetchTodos, function(req, res, next) {
