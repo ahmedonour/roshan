@@ -1,122 +1,135 @@
-:root{
-	--ff-main : 'Playfair Display', serif;
-	--ff-sec : 'DM Serif Display', serif;
-	--clr-white : #fff;
-	--clr-black : #000;
+:root {
+    --ff-main: 'Playfair Display', serif;
+    --ff-sec: 'DM Serif Display', serif;
+    --clr-white: #fff;
+    --clr-black: #000;
 }
-*{
-	font-family: var(--ff-main);
+
+* {
+    font-family: var(--ff-main);
 }
-body{
-	background-image: url('../img/House/img-1.jpg');
-	background-position: center;
-	background-size: cover;
-	background-repeat: no-repeat;
+
+body {
+    background-color: var(--clr-black);
 }
+
 .prompt {
-	max-width: 400px;
-	margin: 50px auto;
-	padding: 25px;
-	border: 1px solid #e6e6e6;
-	border-radius: 8px;
-	background-color: rgb(255, 255, 255,0.3);
-	backdrop-filter: blur(5px);
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 25px;
+    border: 1px solid #e6e6e6;
+    border-radius: 8px;
+    background-color: rgb(255, 255, 255, 0.3);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+}
+
+.prompt h1,
+h3 {
+    color: var(--clr-white);
 }
 
 button {
-	display: block;
-	padding: 10px;
-	width: 100%;
-	border-radius: 3px;
-	background: #d83f45;
-	font-size: 14px;
-	font-weight: 700;
-	color: white;
-	cursor: pointer;
+    display: block;
+    padding: 10px;
+    width: 100%;
+    border-radius: 30px;
+    background: var(--clr-white);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--clr-black);
+    cursor: pointer;
 }
 
 a.button {
-	box-sizing: border-box;
-	display: block;
-	padding: 10px;
-	width: 100%;
-	border-radius: 3px;
-	background: #000;
-	font-size: 14px;
-	font-weight: 700;
-	text-align: center;
-	text-decoration: none;
-	color: white;
+    box-sizing: border-box;
+    display: block;
+    padding: 10px;
+    width: 100%;
+    border-radius: 30px;
+    background: var(--clr-black);
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    color: var(--clr-black);
 }
 
 a.google {
-	background: #4787ed;
+    background: #4787ed;
 }
 
 button:hover {
-	background-color: #c83f45;
+    background-color: var(--clr-black);
+    color: var(--clr-white);
 }
 
 h1 {
-	margin: 0 0 20px 0;
-	padding: 0 0 5px 0;
-	font-size: 24px;
-	font-weight: 500;
+    margin: 0 0 20px 0;
+    padding: 0 0 5px 0;
+    font-size: 24px;
+    font-weight: 500;
 }
 
 h3 {
-	margin-top: 0;
-	font-size: 24px;
-	font-weight: 300;
-	text-align: center;
-	color: #b83f45;
+    margin-top: 0;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    color: var(--clr-white);
 }
 
 form section {
-	margin: 0 0 20px 0;
-	position: relative; /* for password toggle positioning */
+    margin: 0 0 20px 0;
+    position: relative;
+    /* for password toggle positioning */
 }
 
 label {
-	display: block;
-	margin: 0 0 3px 0;
-	font-size: 14px;
-	font-weight: 500;
+    color: var(--clr-white);
+    display: block;
+    margin: 0 0 3px 0;
+    font-size: 14px;
+    font-weight: 500;
 }
 
 input {
-	box-sizing: border-box;
-	width: 100%;
-	padding: 10px;
-	font-size: 14px;
-	border: 1px solid #d9d9d9;
-	border-radius: 5px;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #d9d9d9;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 input[type=email]:not(:focus):invalid,
 input[type=password]:not(:focus):invalid {
-	color: blueviolet;
-	outline-color: blueviolet;
+    color: blueviolet;
+    outline-color: blueviolet;
 }
 
 hr {
-	border-top: 1px solid #d9d9d9;
-	border-bottom: none;
+    border-top: 1px solid #d9d9d9;
+    border-bottom: none;
 }
 
 p.help {
-	text-align: center;
-	font-weight: 400;
+    text-align: center;
+    font-weight: 400;
+	color: var(--clr-white);
 }
 
+
 /* background image by Cole Bemis <https://feathericons.com> */
+
 .messages p {
-	font-size: 14px;
-	font-weight: 400;
-	line-height: 1.3;
-	color: #d83f45;
-	padding-left: 20px;
-	background-image: url();
-	background-repeat: no-repeat;
-	background-position: center left;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.3;
+    color: #ff0008;
+    padding-left: 20px;
+    background-image: url();
+    background-repeat: no-repeat;
+    background-position: center left;
 }
