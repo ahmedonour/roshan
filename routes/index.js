@@ -21,7 +21,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { user: req.user });
 });
 /* GET THE LIST OF HOMES*/
-router.get('/:homes-list', (req,res) => {
+router.get('/homes-list', (req,res) => {
   db.all( "SELECT * FROM home WHERE owner_id = ?",[
     req.user.id
   ],
@@ -35,9 +35,10 @@ router.get('/:homes-list', (req,res) => {
       }
         
     });
-    res.locals.homes = home;
-    console.log(res.locals.homes)
-    res.render("index", {home: res.locals.homes})
+   
+    console.log(home)
+    res.render("index", {data : home})
+
   });
 });
 /*ADD NEW HOUSE*/
@@ -51,7 +52,7 @@ router.post('/addNewHouse', ensureLoggedIn ,(req,res , next) => {
   (err) => {
     if (err) { return console.error(err.message.at)}
   }),
-  res.render('index');
+  res.redirect('/');
   next();
 });
 
