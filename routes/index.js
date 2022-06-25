@@ -18,11 +18,10 @@ router.get('/', function(req, res, next) {
 	  if (!req.user) { return res.render('home'); }
   next();
 }, function(req, res, next) {
-  console.log(req.user.id)
   res.render('index', { user: req.user });
 });
 /* GET THE LIST OF HOMES*/
-router.get('/homes-list', (req,res) => {
+router.get('/:homes-list', (req,res) => {
   db.all( "SELECT * FROM home WHERE owner_id = ?",[
     req.user.id
   ],
@@ -34,9 +33,11 @@ router.get('/homes-list', (req,res) => {
         location: row.location,
         for: row.for,
       }
-      res.locals.homes = home;
+        
     });
-    res.render("index/homes-list")
+    res.locals.homes = home;
+    console.log(res.locals.homes)
+    res.render("index", {home: res.locals.homes})
   });
 });
 /*ADD NEW HOUSE*/
@@ -45,7 +46,6 @@ router.post('/addNewHouse', ensureLoggedIn ,(req,res , next) => {
   const owner = req.user;
   db.run('INSERT INTO home (owner_id,Location,for) VALUES( ? , ? , ? )',[
     req.user.id,
-    req.body.location,
     req.body.for
   ],
   (err) => {
