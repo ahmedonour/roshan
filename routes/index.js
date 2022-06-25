@@ -21,7 +21,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { user: req.user });
 });
 /* GET THE LIST OF HOMES*/
-router.get('/homes-list', (req,res) => {
+router.get('/homes', (req,res) => {
   db.all( "SELECT * FROM home WHERE owner_id = ?",[
     req.user.id
   ],
