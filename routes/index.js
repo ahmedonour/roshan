@@ -36,7 +36,7 @@ function fetchTodos(req, res, next) {
       return {
         id: row.id,
         title: row.Location,
-        completed: row.ForWhat == 1 ? true : false,
+        completed: row.for,
         url: '/' + row.id
       }
     });
