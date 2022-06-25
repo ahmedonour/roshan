@@ -35,8 +35,12 @@ function fetchTodos(req, res, next) {
     var todos = rows.map(function(row) {
       return {
         id: row.id,
-        title: row.Location,
-        completed: row.for,
+        location: row.Location,
+        four: row.for,
+        space: row.space,
+        bathrooms: row.bathrooms,
+        bedrooms: row.bedrooms,
+        price: row.price,
         url: '/' + row.id
       }
     });
@@ -74,10 +78,14 @@ router.get('/completed', ensureLoggedIn, fetchTodos, function(req, res, next) {
 router.post('/addNewHouse', ensureLoggedIn ,(req,res , next) => {
   console.log(req.user.id);
   const owner = req.user;
-  db.run('INSERT INTO home (owner_id,Location,for) VALUES( ? , ? , ? )',[
+  db.run('INSERT INTO home (owner_id,Location,for,space,bathrooms,bedrooms,price) VALUES( ? , ? , ? , ? ,? , ? , ? )',[
     req.user.id,
     req.body.location,
-    req.body.for
+    req.body.for,
+    req.body.space,
+    req.body.bathrooms,
+    req.body.bedrooms,
+    req.body.price,
   ],
   (err) => {
     if (err) { return console.error(err.message.at)}

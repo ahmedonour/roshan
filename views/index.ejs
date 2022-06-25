@@ -43,8 +43,12 @@
 						<li <%- todo.completed ? 'class="completed"' : '' %>>
 							<form action="<%= todo.url %>" method="post">
 								<div class="view">
-									<label ondblclick="this.closest('li').className = this.closest('li').className + ' editing'; this.closest('li').querySelector('input.edit').focus(); this.closest('li').querySelector('input.edit').value = ''; this.closest('li').querySelector('input.edit').value = '<%= todo.title %>';"><%= todo.title %> </label>
-									<label ondblclick="this.closest('li').className = this.closest('li').className + ' editing'; this.closest('li').querySelector('input.edit').focus(); this.closest('li').querySelector('input.edit').value = ''; this.closest('li').querySelector('input.edit').value = '<%= todo.completed %>';"> <%= todo.completed %></label>
+									<label ondblclick="this.closest('li').className = this.closest('li').className + ' editing'; this.closest('li').querySelector('input.edit').focus(); this.closest('li').querySelector('input.edit').value = ''; this.closest('li').querySelector('input.edit').value = '<%= todo.location %>';"><%= todo.location %> </label>
+									<label ondblclick="this.closest('li').className = this.closest('li').className + ' editing'; this.closest('li').querySelector('input.edit').focus(); this.closest('li').querySelector('input.edit').value = ''; this.closest('li').querySelector('input.edit').value = '<%= todo.four %>';"> <%= todo.four %></label>
+									<label ondblclick="this.closest('li').className = this.closest('li').className + ' editing'; this.closest('li').querySelector('input.edit').focus(); this.closest('li').querySelector('input.edit').value = ''; this.closest('li').querySelector('input.edit').value = '<%= todo.space %>';"><%= todo.space %> SQRM </label>
+									<label ondblclick="this.closest('li').className = this.closest('li').className + ' editing'; this.closest('li').querySelector('input.edit').focus(); this.closest('li').querySelector('input.edit').value = ''; this.closest('li').querySelector('input.edit').value = '<%= todo.bathrooms %>';"> <%= todo.bathrooms %></label>
+									<label ondblclick="this.closest('li').className = this.closest('li').className + ' editing'; this.closest('li').querySelector('input.edit').focus(); this.closest('li').querySelector('input.edit').value = ''; this.closest('li').querySelector('input.edit').value = '<%= todo.bedrooms %>';"><%= todo.bedrooms %> </label>
+									<label ondblclick="this.closest('li').className = this.closest('li').className + ' editing'; this.closest('li').querySelector('input.edit').focus(); this.closest('li').querySelector('input.edit').value = ''; this.closest('li').querySelector('input.edit').value = '<%= todo.price %>';">$ <%= todo.price %> SDG</label>
 								</div>
 								<% if (filter) { %>
 								<input type="hidden" name="filter" value="<%= filter %>"/>
@@ -73,6 +77,10 @@
 					<form action="/addNewHouse" method="POST">
 						<input type="text" id="location" name="location" placeholder="Location" autocomplete="location" required>
 						<input type="text" id="for" name="for" placeholder="For" autocomplete="for" required>
+						<input type="text" id="space" name="space" placeholder="space" autocomplete="space" required>
+						<input type="text" id="bathrooms" name="bathrooms" placeholder="bathrooms" autocomplete="bathrooms" required>
+						<input type="text" id="bedrooms" name="bedrooms" placeholder="bedrooms" autocomplete="bedrooms" required>
+						<input type="text" id="price" name="price" placeholder="price" autocomplete="price" required>
 						<input type="hidden" name="_csrf" value="<%= csrfToken %>">
 						<input type="submit" value="Go">
 					</form>
