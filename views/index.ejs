@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Account •  | Roshan</title>
+		<title>Account •  <%= user.username %> | Roshan</title>
 		<link rel="stylesheet" href="/css/base.css">
 		<link rel="stylesheet" href="/css/index.css">
 		<link rel="stylesheet" href="/css/app.css">
@@ -38,21 +38,31 @@
 				</div>
 				<div class="house-list" id="house-list">
 					<h1>House List</h1>
-				
-					<form action="/homes" method="get">
-						<table>
-                            <tbody>
-								<% for(var homes of data) { %>
-									<tr>
-										<td><%= homes.location %></td>
-										<td><%= homes.for %></td> 
-									</tr>
-								 <% }; %> 
-                        	</tbody>
-						</table>
-						<input type="hidden" name="_csrf" value="<%= csrfToken %>">
-						<input type="submit" value="Go">
-					</form>
+					<ul class="todo-list">
+						<% todos.forEach(function(todo) { %>
+						<li <%- todo.completed ? 'class="completed"' : '' %>>
+							<form action="<%= todo.url %>" method="post">
+								<div class="view">
+									<input class="toggle" type="checkbox" name="completed" <%- todo.completed ? 'checked' : '' %> onchange="this.form.submit();">
+									<label ondblclick="this.closest('li').className = this.closest('li').className + ' editing'; this.closest('li').querySelector('input.edit').focus(); this.closest('li').querySelector('input.edit').value = ''; this.closest('li').querySelector('input.edit').value = '<%= todo.title %>';"><%= todo.title %></label>
+									<button class="destroy" form="delete-<%= todo.id %>"></button>
+								</div>
+								<input class="edit" name="title" value="<%= todo.title %>" onkeyup="if (event.keyCode == 27) { this.setAttribute('data-esc', ''); this.closest('li').className = this.closest('li').className.replace('editing', ''); }" onblur="if (this.getAttribute('data-esc') !== null) { return this.removeAttribute('data-esc'); } this.form.submit();">
+								<% if (filter) { %>
+								<input type="hidden" name="filter" value="<%= filter %>"/>
+								<% } %>
+								<input type="hidden" name="_csrf" value="<%= csrfToken %>">
+							</form>
+							<form id="delete-<%= todo.id %>" action="<%= todo.url %>/delete" method="post">
+								<% if (filter) { %>
+								<input type="hidden" name="filter" value="<%= filter %>"/>
+								<% } %>
+								<input type="hidden" name="_csrf" value="<%= csrfToken %>">
+							</form>
+						</li>
+						<% }); %>
+					</ul>
+					
 				</div>
 				<div class="house-list" id="buy">
 					<h1>Buy</h1>
@@ -77,3 +87,4 @@
 	</script>
 	</body>
 </html>
+
