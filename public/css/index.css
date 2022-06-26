@@ -148,7 +148,7 @@ section .sidebar li button:hover{
 	background-color: rgba(255, 255, 255, 0.5);
 }
  section .house-list{
-	 width: 80%;
+	 width: 85%;
 	 height: 90%;
 	 background-color: var(--clr-white);
 	 border-radius: 15px ;
@@ -157,19 +157,12 @@ section .sidebar li button:hover{
 	 justify-content: center;
 	 align-items: center;
  }
- .house-list .todo-list{
-	width: 90%;
-	background-color: red !important;
- }
- .house-list .todo-list form{
-	width: 90%;
-	background-color: rgb(153, 0, 255) !important;
- }
+
  .house-list{
 	 overflow: scroll;
  }
  .house-list::-webkit-scrollbar{
-	width: 20px;
+	width: 10px;
 	height: 0;
  }
 .house-list::-webkit-scrollbar-track{
@@ -179,16 +172,44 @@ section .sidebar li button:hover{
 	margin-block: .5em;
 }
 .house-list::-webkit-scrollbar-thumb{
-	background-color: #808080;
+	background-color: var(--clr-gray);
 	border-radius: 20px;
 }
-.house-list .veiw table{
-	width: 80%;
-	height: 90%;
+.house-list .todo-list{
+	width: 100%;
+	height: 100%;
+ }
+ .house-list .todo-list li{
+	list-style: none;
+	width: 100%;
+	height: 7rem;
+	color: var(--clr-white);
+	background-color: var(--clr-dark);
+	margin: 2rem 2rem 2rem 0rem;
+	padding: 1rem;
+	border-radius: 60px;
+ }
+ .house-list .todo-list li form{
+	width: 100%;
+ }
+
+.house-list .todo-list li form .veiw{
+	width: 100%;
 	display: flex;
-	flex-direction: column;
-	justify-content: center;
+	justify-content: space-around;
 	align-items: center;
+}
+ table{
+	width: 100%;
+
+}
+th{
+	width: 17%;
+	text-align: center;
+}
+ td{
+	width: 17%;
+	text-align: center;
 }
  #house-list{
 	 display: none;
@@ -219,10 +240,15 @@ section .sidebar li button:hover{
  #sell{
 	 display: none;
 	 flex-direction: column;
+	 justify-content: space-around;
+	 align-items: flex-start;
 	 scroll-behavior: auto;
  }
  #sell:target{
 	 display: flex;
+ }
+ #sell input{
+
  }
  @media only screen  and (min-width:768px) {
 	 body{

@@ -50,6 +50,7 @@ function fetchTodos(req, res, next) {
     next();
   });
 }
+// search for homes
 
 var router = express.Router();
 /* GET home page. */
@@ -87,10 +88,11 @@ router.post('/addNewHouse', ensureLoggedIn ,(req,res , next) => {
     req.body.bedrooms,
     req.body.price,
   ],
+
   (err) => {
-    if (err) { return console.error(err.message.at)}
+    if (err) { return console.error(err.message)}
   }),
-  res.redirect('/');
+  res.redirect('/#house-list');
   next();
 });
 

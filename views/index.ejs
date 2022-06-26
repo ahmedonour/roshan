@@ -81,6 +81,10 @@
 				</div>
 				<div class="house-list" id="buy">
 					<h1>Buy</h1>
+					<form action="/search_for_house" method="get">
+						<input type="search" name="buy" id="buy" placeholder="Search" autocomplete="buy" required>
+						<input type="submit" value="Search" >
+					</form>
 				</div>
 				<div class="house-list" id="rent">
 					<h1>rent</h1>
@@ -100,10 +104,6 @@
 				</div>
 			</section>
 		</div>
-	
-	<script>
-		console.log(homes)
-	</script>
 	</body>
 </html>
 
