@@ -12,8 +12,9 @@
 	</head>
 	<body>
 		<nav>
+			<h1>08827469</h1>
 			<div class="logo">
-				<img src="/img/Roshan-Logo.png" alt="">
+				<a href="/logout"><img src="/img/Roshan-Logo.png" alt=""></a>
 			</div>
 			<input type="checkbox" name="check" id="check">
 			<label for="check">
@@ -24,7 +25,6 @@
 					<i class="fas fa-times-circle"></i>				
 				</label>
 				<li><a href="/logout">Logout</a></li>
-				<li><a href="/profile">Profile</a></li>
 			</div>
 		</nav>
 		<div class="center">
@@ -43,7 +43,6 @@
 						<li <%- todo.completed ? 'class="completed"' : '' %>>
 							<form action="<%= todo.url %>" method="post">
 								<div class="view">
-									
 									<table>
 										<thead>
 											<th>Location</th>
@@ -93,7 +92,12 @@
 					<h1>Add New House</h1>
 					<form action="/addNewHouse" method="POST">
 						<input type="text" id="location" name="location" placeholder="Location" autocomplete="location" required>
-						<input type="text" id="for" name="for" placeholder="For" autocomplete="for" required>
+						<!-- <input type="text" id="for" name="for" placeholder="For" autocomplete="for" required> -->
+						<select name="for" id="for">
+							<option value="">One Choice</option>
+							<option value="Sell">Sell</option>
+							<option value="Rent">Rent</option>
+						</select>
 						<input type="text" id="space" name="space" placeholder="space" autocomplete="space" required>
 						<input type="text" id="bathrooms" name="bathrooms" placeholder="bathrooms" autocomplete="bathrooms" required>
 						<input type="text" id="bedrooms" name="bedrooms" placeholder="bedrooms" autocomplete="bedrooms" required>

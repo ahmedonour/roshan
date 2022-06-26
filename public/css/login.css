@@ -23,7 +23,9 @@ body {
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
 }
-
+.prompt a{
+    text-decoration: none;
+}
 .prompt h1,
 h3 {
     color: var(--clr-white);

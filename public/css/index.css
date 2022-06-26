@@ -19,6 +19,7 @@
 	 width: 100vw;
 	 height: 100vh;
 	 font-family: var(--playfair-display);
+	 background-color: var(--clr-white);
  }
  nav{
 	 margin: 0;
@@ -104,7 +105,7 @@
 	 height: 100vh;
 	 background-color: var(--clr-gray);
 	 border-radius: 30px;
-	 box-shadow: var(--shadow);
+	 /* box-shadow: var(--shadow); */
 	 display: flex;
 	 justify-content: center;
 	 align-items: center;
