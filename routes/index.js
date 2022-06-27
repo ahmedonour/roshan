@@ -96,6 +96,25 @@ router.post('/addNewHouse', ensureLoggedIn ,(req,res , next) => {
   next();
 });
 
-// Get Sell Page
+// Search For home
+router.post('/buyHome', (req , res , next) => {
+  db.each('SELECT * FROM home WHERE for = Sell', (err , rows) =>{
+    if (err) { return next(err);}
+    const homes = rows.map(function(row) {
+      return {
+        id: row.id,
+        location: row.Location,
+        four: row.for,
+        space: row.space,
+        bathrooms: row.bathrooms,
+        bedrooms: row.bedrooms,
+        price: row.price,
+        url: '/' + row.id
+      }
+    });
+    console.log(homes);
+    res.redirect('/#buy')
+  });
+});
 module.exports = router;
 

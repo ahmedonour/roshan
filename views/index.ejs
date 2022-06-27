@@ -62,17 +62,6 @@
 										</tbody>
 									</table>
 								</div>
-								<% if (filter) { %>
-								<input type="hidden" name="filter" value="<%= filter %>"/>
-								<% } %>
-								<input type="hidden" name="_csrf" value="<%= csrfToken %>">
-							</form>
-							<form id="delete-<%= todo.id %>" action="<%= todo.url %>/delete" method="post">
-								<% if (filter) { %>
-								<input type="hidden" name="filter" value="<%= filter %>"/>
-								<% } %>
-								<input type="hidden" name="_csrf" value="<%= csrfToken %>">
-							</form>
 						</li>
 						<% }); %>
 					</ul>
@@ -80,8 +69,8 @@
 				</div>
 				<div class="house-list" id="buy">
 					<h1>Buy</h1>
-					<form action="/search_for_house" method="get">
-						<input type="search" name="buy" id="buy" placeholder="Search" autocomplete="buy" required>
+					<form action="/buyHome" method="post">
+						<input type="hidden" name="_csrf" value="<%= csrfToken %>">
 						<input type="submit" value="Search" >
 					</form>
 				</div>
