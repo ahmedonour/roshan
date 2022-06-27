@@ -53,12 +53,12 @@
 											<th>Price</th>
 										</thead>
 										<tbody>
-											<td><label ondblclick="this.closest('li').className = this.closest('li').className + ' editing'; this.closest('li').querySelector('input.edit').focus(); this.closest('li').querySelector('input.edit').value = ''; this.closest('li').querySelector('input.edit').value = '<%= todo.location %>';"><%= todo.location %> </label></td>
-											<td><label ondblclick="this.closest('li').className = this.closest('li').className + ' editing'; this.closest('li').querySelector('input.edit').focus(); this.closest('li').querySelector('input.edit').value = ''; this.closest('li').querySelector('input.edit').value = '<%= todo.four %>';"> <%= todo.four %></label></td>
-											<td><label ondblclick="this.closest('li').className = this.closest('li').className + ' editing'; this.closest('li').querySelector('input.edit').focus(); this.closest('li').querySelector('input.edit').value = ''; this.closest('li').querySelector('input.edit').value = '<%= todo.space %>';"><%= todo.space %> SQRM </label></td>
-											<td><label ondblclick="this.closest('li').className = this.closest('li').className + ' editing'; this.closest('li').querySelector('input.edit').focus(); this.closest('li').querySelector('input.edit').value = ''; this.closest('li').querySelector('input.edit').value = '<%= todo.bathrooms %>';"> <%= todo.bathrooms %></label></td>
-											<td><label ondblclick="this.closest('li').className = this.closest('li').className + ' editing'; this.closest('li').querySelector('input.edit').focus(); this.closest('li').querySelector('input.edit').value = ''; this.closest('li').querySelector('input.edit').value = '<%= todo.bedrooms %>';"><%= todo.bedrooms %> </label></td>
-											<td><label ondblclick="this.closest('li').className = this.closest('li').className + ' editing'; this.closest('li').querySelector('input.edit').focus(); this.closest('li').querySelector('input.edit').value = ''; this.closest('li').querySelector('input.edit').value = '<%= todo.price %>';">$ <%= todo.price %> SDG</label></td>
+											<td><label ondblclick=""><%= todo.location %> </label></td>
+											<td><label ondblclick=""> <%= todo.four %></label></td>
+											<td><label ondblclick=""><%= todo.space %> SQRM </label></td>
+											<td><label ondblclick=""> <%= todo.bathrooms %></label></td>
+											<td><label ondblclick=""><%= todo.bedrooms %> </label></td>
+											<td><label ondblclick="">$ <%= todo.price %> SDG</label></td>
 										</tbody>
 									</table>
 								</div>
@@ -69,10 +69,33 @@
 				</div>
 				<div class="house-list" id="buy">
 					<h1>Buy</h1>
-					<form action="/buyHome" method="get">
-						<input type="hidden" name="_csrf" value="<%= csrfToken %>">
-						<input type="submit" value="Search" >
-					</form>
+						<ul class="todo-list">
+							<% homes.forEach(function(home) { %>
+							<li>
+								<form action="<%= home.url %>" method="post">
+									<div class="view">
+										<table>
+											<thead>
+												<th>Location</th>
+												<th>For</th>
+												<th>Space</th>
+												<th>Bathroom</th>
+												<th>Bedroom</th>
+												<th>Price</th>
+											</thead>
+											<tbody>
+												<td><label ondblclick=""><%= home.location %> </label></td>
+												<td><label ondblclick=""> <%= home.four %></label></td>
+												<td><label ondblclick=""><%= home.space %> SQRM </label></td>
+												<td><label ondblclick=""> <%= home.bathrooms %></label></td>
+												<td><label ondblclick=""><%= home.bedrooms %> </label></td>
+												<td><label ondblclick="">$ <%= home.price %> SDG</label></td>
+											</tbody>
+										</table>
+									</div>
+							</li>
+							<% }); %>
+						</ul>
 				</div>
 				<div class="house-list" id="rent">
 					<h1>Rent</h1>

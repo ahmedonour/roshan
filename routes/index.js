@@ -49,30 +49,39 @@ function fetchTodos(req, res, next) {
     next();
   });
 }
-// search for homes
-
+// search homes sell
+function findHomeforSell(req , res , next){
+  const sell = "Sell";
+  db.all("SELECT * FROM home WHERE for like 'sell'", [
+    sell
+  ] ,function(err , rows){
+    if (err) { return next(err);}
+    var homes = rows.map(function(row) {
+      return {
+        id: row.id,
+        location: row.Location,
+        four: row.for,
+        space: row.space,
+        bathrooms: row.bathrooms,
+        bedrooms: row.bedrooms,
+        price: row.price,
+        url: '/' + row.id
+      }
+    });
+    res.locals.homes = homes;
+  });
+};
 var router = express.Router();
 /* GET home page. */
 router.get('/', function(req, res, next) {
   if (!req.user) { return res.render('home'); }
   next();
-}, fetchTodos, function(req, res, next) {
+}, fetchTodos,findHomeforSell ,function(req, res, next) {
   res.locals.filter = null;
   res.render('index', { user: req.user });
 });
 /* GET THE LIST OF HOMES*/
 				
-router.get('/active', ensureLoggedIn, fetchTodos, function(req, res, next) {
-  res.locals.todos = res.locals.todos.filter(function(todo) { return !todo.completed; });
-  res.locals.filter = 'active';
-  res.render('index', { user: req.user });
-});
-
-router.get('/completed', ensureLoggedIn, fetchTodos, function(req, res, next) {
-  res.locals.todos = res.locals.todos.filter(function(todo) { return todo.completed; });
-  res.locals.filter = 'completed';
-  res.render('index', { user: req.user });
-});
 
 /*ADD NEW HOUSE*/
 router.post('/addNewHouse', ensureLoggedIn ,(req,res , next) => {
@@ -96,27 +105,6 @@ router.post('/addNewHouse', ensureLoggedIn ,(req,res , next) => {
 });
 
 // Search For home
-router.get('/buyHome', (req , res , next) => {
-  const sell = "Sell";
-  const rent = "Rent";
-
-  db.each('SELECT * FROM home WHERE for = Sell', [] ,(err , rows) =>{
-    if (err) { return next(err);}
-    const homes = rows.map(function(row) {
-      return {
-        id: row.id,
-        location: row.Location,
-        four: row.for,
-        space: row.space,
-        bathrooms: row.bathrooms,
-        bedrooms: row.bedrooms,
-        price: row.price,
-        url: '/' + row.id
-      }
-    });
-    console.log(homes);
-    res.render('index', { homes: homes });
-  });
-});
+router.get('/buyHome');
 module.exports = router;
 
