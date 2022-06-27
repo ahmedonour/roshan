@@ -45,8 +45,7 @@ function fetchTodos(req, res, next) {
       }
     });
     res.locals.todos = todos;
-    res.locals.activeCount = todos.filter(function(todo) { return !todo.completed; }).length;
-    res.locals.completedCount = todos.length - res.locals.activeCount;
+
     next();
   });
 }
@@ -97,8 +96,11 @@ router.post('/addNewHouse', ensureLoggedIn ,(req,res , next) => {
 });
 
 // Search For home
-router.post('/buyHome', (req , res , next) => {
-  db.each('SELECT * FROM home WHERE for = Sell', (err , rows) =>{
+router.get('/buyHome', (req , res , next) => {
+  const sell = "Sell";
+  const rent = "Rent";
+
+  db.each('SELECT * FROM home WHERE for = Sell', [] ,(err , rows) =>{
     if (err) { return next(err);}
     const homes = rows.map(function(row) {
       return {
@@ -113,7 +115,7 @@ router.post('/buyHome', (req , res , next) => {
       }
     });
     console.log(homes);
-    res.redirect('/#buy')
+    res.render('index', { homes: homes });
   });
 });
 module.exports = router;

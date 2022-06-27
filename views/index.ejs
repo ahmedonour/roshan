@@ -40,7 +40,7 @@
 					<h1>House List</h1>
 					<ul class="todo-list">
 						<% todos.forEach(function(todo) { %>
-						<li <%- todo.completed ? 'class="completed"' : '' %>>
+						<li>
 							<form action="<%= todo.url %>" method="post">
 								<div class="view">
 									<table>
@@ -69,13 +69,13 @@
 				</div>
 				<div class="house-list" id="buy">
 					<h1>Buy</h1>
-					<form action="/buyHome" method="post">
+					<form action="/buyHome" method="get">
 						<input type="hidden" name="_csrf" value="<%= csrfToken %>">
 						<input type="submit" value="Search" >
 					</form>
 				</div>
 				<div class="house-list" id="rent">
-					<h1>rent</h1>
+					<h1>Rent</h1>
 				</div>
 				<div class="house-list" id="sell">
 					<h1>Add New House</h1>
