@@ -5,7 +5,9 @@
 	 --clr-gray: #bcbcbc;
 	 --clr-white: #ffffff;
 	 --clr-white-dark: #f0f0f0;
+	 --clr-green : #149703;
 	 --shadow: 8px 8px 40px 0px rgba(0, 0, 0, 0.25);
+	 --shadow-input: 8px 8px 7px 0px rgba(0, 0, 0, 0.25);
 	 --playfair-display: 'Playfair Display', serif;
 	 --noto-serif: 'Noto Serif', serif;
 
@@ -205,18 +207,22 @@ section .sidebar li button:hover{
 
 }
 th{
+	display: none;
 	width: 17%;
 	text-align: center;
+	font-size: .5rem;
 }
  td{
 	width: 17%;
 	text-align: center;
+	font-size: .5rem;
+
 }
  #house-list{
 	 display: none;
 	 flex-direction: column;
 	 justify-content: space-around;
-	 align-items: flex-start;
+	 align-items: center;
  }
  .house-list form{
 	 display: flex;
@@ -241,16 +247,35 @@ th{
  #sell{
 	 display: none;
 	 flex-direction: column;
-	 justify-content: space-around;
-	 align-items: flex-start;
-	 scroll-behavior: auto;
+	 justify-content: space-between;
+	 align-items: center;
  }
  #sell:target{
 	 display: flex;
  }
- #sell input{
-
+ #insertHome :is(input,select){
+	 width: 15rem;
+	 height: 3rem;
+	 font-size: 1rem;
+	 border-radius: 5rem;
+	 padding: 1rem;
+	 margin-bottom: 1rem;
+	 border: none;
+	 box-shadow: var(--shadow-input);
+	 outline: none;
+	 transition: all 550ms ease-in-out;
  }
+ #insertHome input[type = submit]{
+	 text-align: center;
+	color: var(--clr-dark);
+	font-family: var(--playfair-display);
+}
+ #insertHome input[type = submit]:hover{
+	 color: var(--clr-white);
+	 font-family: var(--playfair-display);
+	 background-color: var(--clr-green);
+	 cursor: pointer;
+}
  @media only screen  and (min-width:768px) {
 	 body{
 		 background-color: var(--clr-white-dark) ;
@@ -292,5 +317,20 @@ th{
 	   width: 85vw;
 	   height: 80vh;
    }
-   
+   th{
+	display: block;
+	width: 17%;
+	text-align: center;
+	font-size: 1rem;
+	}
+
+ td{
+	width: 17%;
+	text-align: center;
+	font-size: 1rem;
+
+}
+#insertHome :is(input,select){
+	width: 30rem;
+}
  }

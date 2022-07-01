@@ -36,7 +36,7 @@ function fetchTodos(req, res, next) {
       return {
         id: row.id,
         location: row.Location,
-        four: row.for,
+        four: row.four,
         space: row.space,
         bathrooms: row.bathrooms,
         bedrooms: row.bedrooms,
@@ -52,15 +52,15 @@ function fetchTodos(req, res, next) {
 // search homes sell
 function findHomeforSell(req , res , next){
   const sell = "Sell";
-  db.all("SELECT * FROM home WHERE for like 'sell'", [
+  db.all("SELECT * FROM home WHERE four like ?", [
     sell
   ] ,function(err , rows){
     if (err) { return next(err);}
-    var homes = rows.map(function(row) {
+    var todos = rows.map(function(row) {
       return {
         id: row.id,
         location: row.Location,
-        four: row.for,
+        four: row.four,
         space: row.space,
         bathrooms: row.bathrooms,
         bedrooms: row.bedrooms,
@@ -68,7 +68,9 @@ function findHomeforSell(req , res , next){
         url: '/' + row.id
       }
     });
-    res.locals.homes = homes;
+    res.locals.todos = todos;
+    console.log(todos)
+    next();
   });
 };
 var router = express.Router();
@@ -76,8 +78,8 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   if (!req.user) { return res.render('home'); }
   next();
-}, fetchTodos,findHomeforSell ,function(req, res, next) {
-  res.locals.filter = null;
+}, fetchTodos,function(req, res, next) {
+  // res.locals.filter = null;
   res.render('index', { user: req.user });
 });
 /* GET THE LIST OF HOMES*/
@@ -86,8 +88,7 @@ router.get('/', function(req, res, next) {
 /*ADD NEW HOUSE*/
 router.post('/addNewHouse', ensureLoggedIn ,(req,res , next) => {
   console.log(req.user.id);
-  const owner = req.user;
-  db.run('INSERT INTO home (owner_id,Location,for,space,bathrooms,bedrooms,price) VALUES( ? , ? , ? , ? ,? , ? , ? )',[
+  db.run('INSERT INTO home (owner_id,Location,four,space,bathrooms,bedrooms,price) VALUES( ? , ? , ? , ? ,? , ? , ? )',[
     req.user.id,
     req.body.location,
     req.body.for,
@@ -105,6 +106,9 @@ router.post('/addNewHouse', ensureLoggedIn ,(req,res , next) => {
 });
 
 // Search For home
-router.get('/buyHome');
+router.get('/buyHome', findHomeforSell , (req , res , next) => {
+  res.redirect('/#buy');
+  next();
+});
 module.exports = router;
 

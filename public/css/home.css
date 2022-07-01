@@ -149,14 +149,14 @@ header a.button {
 }	
 /* Mid Section */
 .mid-section{
-	width: 100vw;
+	width: auto;
 	height: 100vh;
 	background-color: var(--clr-black);
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
 	align-items: center;
-	
+	overflow: hidden;
 }
 .mid-section .about-us{
 	width: 25%;

@@ -12,7 +12,6 @@
 	</head>
 	<body>
 		<nav>
-			<h1>08827469</h1>
 			<div class="logo">
 				<a href="/logout"><img src="/img/Roshan-Logo.png" alt=""></a>
 			</div>
@@ -62,6 +61,7 @@
 										</tbody>
 									</table>
 								</div>
+							</form>
 						</li>
 						<% }); %>
 					</ul>
@@ -69,53 +69,43 @@
 				</div>
 				<div class="house-list" id="buy">
 					<h1>Buy</h1>
-						<ul class="todo-list">
-							<% homes.forEach(function(home) { %>
-							<li>
-								<form action="<%= home.url %>" method="post">
-									<div class="view">
-										<table>
-											<thead>
-												<th>Location</th>
-												<th>For</th>
-												<th>Space</th>
-												<th>Bathroom</th>
-												<th>Bedroom</th>
-												<th>Price</th>
-											</thead>
-											<tbody>
-												<td><label ondblclick=""><%= home.location %> </label></td>
-												<td><label ondblclick=""> <%= home.four %></label></td>
-												<td><label ondblclick=""><%= home.space %> SQRM </label></td>
-												<td><label ondblclick=""> <%= home.bathrooms %></label></td>
-												<td><label ondblclick=""><%= home.bedrooms %> </label></td>
-												<td><label ondblclick="">$ <%= home.price %> SDG</label></td>
-											</tbody>
-										</table>
-									</div>
-							</li>
-							<% }); %>
-						</ul>
+					
 				</div>
 				<div class="house-list" id="rent">
 					<h1>Rent</h1>
 				</div>
 				<div class="house-list" id="sell">
-					<h1>Add New House</h1>
-					<form action="/addNewHouse" method="POST">
-						<input type="text" id="location" name="location" placeholder="Location" autocomplete="location" required>
+					<form action="/addNewHouse" method="post" id="insertHome">
+						<h1>Add New House</h1>
+						<label for="location">Location</label>
+						<select name="location" id="location">
+							<option value="">One Choice</option>
+							<option value="Khartuom">Khartuom</option>
+							<option value="Bahri">Bahri</option>
+							<option value="Omdurman">Omdurman</option>
+							<option value="Japl-Awlea">Japl-Awlea</option>
+							<option value="Sharq-Alnail">Sharq-Alnail</option>
+							<option value="Ombada">Ombada</option>
+							<option value="Karary">Karary</option>
+						</select>
+						<!-- <input type="text" id="location" name="location" placeholder="Location" autocomplete="location" required> -->
 						<!-- <input type="text" id="for" name="for" placeholder="For" autocomplete="for" required> -->
+						<label for="stauts">Stauts</label>
 						<select name="for" id="for">
 							<option value="">One Choice</option>
 							<option value="Sell">Sell</option>
 							<option value="Rent">Rent</option>
 						</select>
-						<input type="text" id="space" name="space" placeholder="space" autocomplete="space" required>
-						<input type="text" id="bathrooms" name="bathrooms" placeholder="bathrooms" autocomplete="bathrooms" required>
-						<input type="text" id="bedrooms" name="bedrooms" placeholder="bedrooms" autocomplete="bedrooms" required>
-						<input type="text" id="price" name="price" placeholder="price" autocomplete="price" required>
+						<label for="space">Space</label>
+						<input type="number" id="space" name="space" placeholder="space" autocomplete="space" required>
+						<label for="bathrooms">Bathrooms</label>
+						<input type="number" id="bathrooms" name="bathrooms" placeholder="bathrooms" autocomplete="bathrooms" required>
+						<label for="bedrooms">Bedrooms</label>
+						<input type="number" id="bedrooms" name="bedrooms" placeholder="bedrooms" autocomplete="bedrooms" required>
+						<label for="price">Price</label>
+						<input type="number" id="price" name="price" placeholder="price" autocomplete="price" required>
 						<input type="hidden" name="_csrf" value="<%= csrfToken %>">
-						<input type="submit" value="Go">
+						<input type="submit" value="Publish">
 					</form>
 				</div>
 			</section>
