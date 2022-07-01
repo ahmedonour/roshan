@@ -192,14 +192,15 @@ section .sidebar li button:hover{
 	padding: 1rem;
 	border-radius: 60px;
  }
- .house-list .todo-list li form{
+ /* .house-list .todo-list li form{
 	width: 100%;
- }
+ } */
 
-.house-list .todo-list li form .veiw{
+.house-list .todo-list li form #veiw{
 	width: 100%;
 	display: flex;
-	justify-content: space-around;
+	flex-direction: row;
+	justify-content: center;
 	align-items: center;
 }
  table{
@@ -207,7 +208,6 @@ section .sidebar li button:hover{
 
 }
 th{
-	display: none;
 	width: 17%;
 	text-align: center;
 	font-size: .5rem;
@@ -217,6 +217,11 @@ th{
 	text-align: center;
 	font-size: .5rem;
 
+}
+#circul{
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
 }
  #house-list{
 	 display: none;
@@ -318,7 +323,6 @@ th{
 	   height: 80vh;
    }
    th{
-	display: block;
 	width: 17%;
 	text-align: center;
 	font-size: 1rem;

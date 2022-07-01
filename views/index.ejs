@@ -41,9 +41,10 @@
 						<% todos.forEach(function(todo) { %>
 						<li>
 							<form action="<%= todo.url %>" method="post">
-								<div class="view">
+								<div class="view" id="view">
 									<table>
 										<thead>
+											<th id="img-in-table"></th>
 											<th>Location</th>
 											<th>For</th>
 											<th>Space</th>
@@ -52,12 +53,13 @@
 											<th>Price</th>
 										</thead>
 										<tbody>
-											<td><label ondblclick=""><%= todo.location %> </label></td>
-											<td><label ondblclick=""> <%= todo.four %></label></td>
-											<td><label ondblclick=""><%= todo.space %> SQRM </label></td>
-											<td><label ondblclick=""> <%= todo.bathrooms %></label></td>
-											<td><label ondblclick=""><%= todo.bedrooms %> </label></td>
-											<td><label ondblclick="">$ <%= todo.price %> SDG</label></td>
+											<td><img src="https://picsum.photos/200" id="circul" alt=""></td>
+											<td><%= todo.location %></td>
+											<td><%= todo.four %></td>
+											<td><%= todo.space %> SQRM</td>
+											<td><%= todo.bathrooms %></td>
+											<td><%= todo.bedrooms %> </td>
+											<td>$ <%= todo.price %> SDG</td>
 										</tbody>
 									</table>
 								</div>
