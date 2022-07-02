@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Account •  <%= user.username %> | Roshan</title>
+		<title>Account • <%= user.username %> | Roshan</title>
 		<link rel="stylesheet" href="/css/base.css">
 		<link rel="stylesheet" href="/css/index.css">
 		<link rel="stylesheet" href="/css/app.css">
@@ -43,24 +43,25 @@
 							<form action="<%= todo.url %>" method="post">
 								<div class="view" id="view">
 									<table>
-										<thead>
-											<th id="img-in-table"></th>
-											<th>Location</th>
-											<th>For</th>
-											<th>Space</th>
-											<th>Bathroom</th>
-											<th>Bedroom</th>
-											<th>Price</th>
-										</thead>
-										<tbody>
-											<td><img src="https://picsum.photos/200" id="circul" alt=""></td>
-											<td><%= todo.location %></td>
-											<td><%= todo.four %></td>
-											<td><%= todo.space %> SQRM</td>
-											<td><%= todo.bathrooms %></td>
-											<td><%= todo.bedrooms %> </td>
-											<td>$ <%= todo.price %> SDG</td>
-										</tbody>
+										<tr>
+											<th></th>
+												<th>Location</th>
+												<th>For</th>
+												<th>Space</th>
+												<th>Bathroom</th>
+												<th>Bedroom</th>
+												<th>Price</th>
+										</tr>
+									
+											<tr>
+												<td rowspan="2"><img src="https://picsum.photos/200" id="circul" alt=""></td>
+												<td><%= todo.location %></td>
+												<td><%= todo.four %></td>
+												<td><%= todo.space %> SQRM</td>
+												<td><%= todo.bathrooms %></td>
+												<td><%= todo.bedrooms %> </td>
+												<td>$ <%= todo.price %> SDG</td>
+											</tr>
 									</table>
 								</div>
 							</form>
@@ -69,12 +70,58 @@
 					</ul>
 					
 				</div>
-				<div class="house-list" id="buy">
-					<h1>Buy</h1>
+			<div class="house-list" id="buy">
+				<form action="/buyHome/fillter" method="post">
+					<select name="location" id="location">
+						<option value="">One Choice</option>
+						<option value="Khartuom">Khartuom</option>
+						<option value="Bahri">Bahri</option>
+						<option value="Omdurman">Omdurman</option>
+						<option value="Japl-Awlea">Japl-Awlea</option>
+						<option value="Sharq-Alnail">Sharq-Alnail</option>
+						<option value="Ombada">Ombada</option>
+						<option value="Karary">Karary</option>
+					</select>
+					<div class="max_min">
+						<input id="min" type="number" name="min" placeholder="Minmum Price">
+						<input id="max" type="number" name="max" placeholder="Maximum Price">
+					</div>
 					
-				</div>
+					<div class="view">
+
+				
+					</div>
+					<input type="hidden" name="_csrf" value="<%= csrfToken %>">
+					<button type="submit" >Go</button>
+				</form>
+			</div>
 				<div class="house-list" id="rent">
 					<h1>Rent</h1>
+					<form action="/rentHome/filter" method="post">
+
+						<select name="location" id="location">
+							<option value="">One Choice</option>
+							<option value="Khartuom">Khartuom</option>
+							<option value="Bahri">Bahri</option>
+							<option value="Omdurman">Omdurman</option>
+							<option value="Japl-Awlea">Japl-Awlea</option>
+							<option value="Sharq-Alnail">Sharq-Alnail</option>
+							<option value="Ombada">Ombada</option>
+							<option value="Karary">Karary</option>
+						</select>
+						<div class="max_min">
+							<input id="min" type="number" name="min" placeholder="Minmum Price">
+							<input id="max" type="number" name="max" placeholder="Maximum Price">
+						</div>
+						
+						<div class="view">
+
+					
+						</div>
+						<input type="hidden" name="_csrf" value="<%= csrfToken %>">
+						<button type="submit" >Go</button>
+					</form>
+
 				</div>
 				<div class="house-list" id="sell">
 					<form action="/addNewHouse" method="post" id="insertHome">

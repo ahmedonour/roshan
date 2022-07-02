@@ -1,0 +1,34 @@
+<div class="house-list" id="buy">
+    <h1>Buy</h1>
+    <form action="/buyHome" method="get">
+    <ul class="todo-list">
+        <% namor.forEach(function(namor) { %>
+            <li>
+                <div class="view" id="view">
+                    <table>
+                        <tr>
+                            <th></th>
+                                <th>Location</th>
+                                <th>For</th>
+                                <th>Space</th>
+                                <th>Bathroom</th>
+                                <th>Bedroom</th>
+                                <th>Price</th>
+                        </tr>
+                        <tr>
+                            <td rowspan="2"><img src="https://picsum.photos/200" id="circul" alt=""></td>
+                            <td><%= namor.location %></td>
+                            <td><%= namor.four %></td>
+                            <td><%= namor.space %> SQRM</td>
+                            <td><%= namor.bathrooms %></td>
+                            <td><%= namor.bedrooms %> </td>
+                            <td>$ <%= namor.price %> SDG</td>
+                        </tr>
+                    </table>
+                </div>
+            </li>
+        <% }); %>
+    </ul>
+    <input type="button" value="GO" name="buy">					
+</form>
+</div>

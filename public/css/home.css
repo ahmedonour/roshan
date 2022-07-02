@@ -2,9 +2,9 @@
 	--ff-main : 'Marcellus SC', serif;
 	--ff-sec : 'DM Serif Display', serif;
 	--ff-therd : 'Abril Fatface';
-	--clr-white : #fff;
-	--clr-black : #000;	
-	--clr-orange:#00d7ff;
+	--clr-black : #000000;
+	--clr-white : #ffffff;	
+	--clr-orange: #ee6b00;
 }
 
 
@@ -13,11 +13,10 @@
 	padding: 0;
 }
 html{
-	background-color: var(--clr-black);
+	background-color: var(--clr-white);
 	width: 100vw;
 	height: 100vh;
 }
-
 /* main section */
 /* .hero {
 	width: 100vw;
@@ -32,7 +31,7 @@ header{
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-	color: var(--clr-white);
+	color: var(--clr-black);
 	z-index: 2;
 }
 header img{
@@ -57,14 +56,14 @@ header .button {
 	padding: 10px 30px;
 	font-size: 1rem;
 	font-weight: 500;
-	color: var(--clr-white);
-	border-bottom: 2px solid var(--clr-white);
+	color: var(--clr-black);
+	border-bottom: 2px solid var(--clr-black);
 	
 	transition: all 1s;
 }
 header .button:hover {
 	background: rgba(0, 0, 0, 0.262);
-	color: var(--clr-white);
+	color: var(--clr-black);
 }
 
 header a.button {
@@ -120,10 +119,10 @@ header a.button {
 	width: 70%;
 	font-size: 5rem;
 	letter-spacing: 2px;
-	color: var(--clr-white);
+	color: var(--clr-black);
 }
 .centerDiv p{
-	color: var(--clr-white);
+	color: var(--clr-black);
 	width: 70%;
 	font-size: 1rem;
 	line-height: 1rem;
@@ -131,36 +130,40 @@ header a.button {
 .centerDiv button{
 	width: 50%;
 	height: 40px;
-	background: rgba(0, 0, 0, 0.514);
+	background: var(--clr-orange);
 	border: none;
-	color: #fff;
+	color: var(--clr-white);
 	margin: 1rem;
 	font-family: var(--ff-sec);
+	border-radius: 5px;
 	font-size: 1.5rem;
+	cursor: pointer;
+	transition: all 500ms ease-in-out;
 }
 .centerDiv button:hover{
-	color: var(--clr-black);
-	background: wheat;
+	border-radius: 30px;
 }
 .centerDiv a{
 	text-decoration: none;
-	color: var(--clr-white);
+	color: var(--clr-black);
 
 }	
 /* Mid Section */
 .mid-section{
-	width: auto;
 	height: 100vh;
-	background-color: var(--clr-black);
+	background-color: var(--clr-white);
 	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
+	flex-wrap: wrap;
+	flex-direction: column;
+	justify-content: center;
 	align-items: center;
-	overflow: hidden;
+	scroll-snap-type: x mandatory;
+	overflow-x: scroll;
 }
 .mid-section .about-us{
-	width: 25%;
-	height: 60%;
+	scroll-snap-align: start;
+	width: 100vw;
+	height: 100vh;
 	padding: 1.5rem;
 	display: flex;
 	flex-direction: column ;
@@ -169,18 +172,18 @@ header a.button {
 	background: rgba(255, 255, 255, 0.307);
 	-webkit-backdrop-filter: blur(10px);
 	backdrop-filter: blur(10px);
-	border-radius: 5pc;
+	/* border-radius: 5pc; */
 	box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
 	transition: all 1s;
-	color: var(--clr-white);
-}
-.mid-section .about-us:hover{
-	transform:rotate(360deg);
-	background: var(--clr-white);
 	color: var(--clr-black);
 }
-/* .mid-section .about-us h1 ,p{
+/* .mid-section .about-us:hover{
+	transform:rotate(360deg);
+	background: var(--clr-black);
 	color: var(--clr-white);
+} */
+/* .mid-section .about-us h1 ,p{
+	color: var(--clr-black);
 	
 } */
 .mid-section .about-us img{
@@ -189,11 +192,11 @@ header a.button {
 }
 /* Footer Section */
 .info{
-	border-top: 2px solid var(--clr-white) ;
+	border-top: 2px solid var(--clr-black) ;
 	width: 100vw;
 	height: 50vh;
-	background: var(--clr-black);
-	color: var(--clr-white);
+	background: var(--clr-white);
+	color: var(--clr-black);
 	font-family: var(--ff-sec);
 	display: flex;
 	flex-direction: column;
@@ -268,13 +271,16 @@ header a.button {
 	}	
 	.mid-section{
 		width: 100vw;
-		height: 220vh;
+		height: 100vh;
 		display: flex;
-		flex-direction: column;
+		flex-direction: row;
+
+
 	}
 	.mid-section .about-us{
-		width: 50%;
-		height: 20%;
+		scroll-snap-align: start;
+		width: 100vw;
+		height: 100vh;
 	}
 	.info{
 		width: 96vw;
@@ -294,7 +300,7 @@ header a.button {
 		flex-direction: row;
 		justify-content: space-between;
 		align-items: center;
-		color: var(--clr-white);
+		color: var(--clr-black);
 		z-index: 2;
 	}
 	header h1{

@@ -1,0 +1,32 @@
+<ul class="todo-list">
+    <% rent.forEach(function(rent) { %>
+        <li>
+            <div class="view" id="view">
+                <table>
+                    <tr>
+                        <th></th>
+                            <th>Location</th>
+                            <th>For</th>
+                            <th>Space</th>
+                            <th>Bathroom</th>
+                            <th>Bedroom</th>
+                            <th>Price</th>
+                    </tr>
+                    <tr>
+                        <td><img src="https://picsum.photos/200" id="circul" alt=""></td>
+                        <td><%= rent.loc %></td>
+                        <td><%= rent.four %></td>
+                        <td><%= rent.space %> SQRM</td>
+                        <td><%= rent.bathrooms %></td>
+                        <td><%= rent.bedrooms %> </td>
+                        <td>$ <%= rent.price %> SDG</td>
+                    </tr>
+                </table>
+            </div>
+        </li>
+    <% }); %>
+</ul>
+
+
+
+

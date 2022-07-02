@@ -7,6 +7,7 @@ var csrf = require('csurf');
 var passport = require('passport');
 var logger = require('morgan');
 
+
 // pass the session to the connect sqlite3 module
 // allowing it to inherit from session.Store
 var SQLiteStore = require('connect-sqlite3')(session);

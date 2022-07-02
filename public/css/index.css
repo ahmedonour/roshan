@@ -192,9 +192,9 @@ section .sidebar li button:hover{
 	padding: 1rem;
 	border-radius: 60px;
  }
- /* .house-list .todo-list li form{
+ .house-list .todo-list li form{
 	width: 100%;
- } */
+ }
 
 .house-list .todo-list li form #veiw{
 	width: 100%;
