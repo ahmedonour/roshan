@@ -44,7 +44,6 @@
 								<div class="view" id="view">
 									<table>
 										<tr>
-											<th></th>
 												<th>Location</th>
 												<th>For</th>
 												<th>Space</th>
@@ -53,8 +52,7 @@
 												<th>Price</th>
 										</tr>
 									
-											<tr>
-												<td rowspan="2"><img src="https://picsum.photos/200" id="circul" alt=""></td>
+											<tr>	
 												<td><%= todo.location %></td>
 												<td><%= todo.four %></td>
 												<td><%= todo.space %> SQRM</td>
@@ -71,7 +69,8 @@
 					
 				</div>
 			<div class="house-list" id="buy">
-				<form action="/buyHome/fillter" method="post">
+				<form action="/buyHome/filters" method="post">
+					<label for="location">Chose One Of Them</label>
 					<select name="location" id="location">
 						<option value="">One Choice</option>
 						<option value="Khartuom">Khartuom</option>
@@ -83,13 +82,9 @@
 						<option value="Karary">Karary</option>
 					</select>
 					<div class="max_min">
+						<label for="max_min">Your Range</label>
 						<input id="min" type="number" name="min" placeholder="Minmum Price">
-						<input id="max" type="number" name="max" placeholder="Maximum Price">
-					</div>
-					
-					<div class="view">
-
-				
+						<input id="max" type="number" name="max_buy" placeholder="Maximum Price">
 					</div>
 					<input type="hidden" name="_csrf" value="<%= csrfToken %>">
 					<button type="submit" >Go</button>
@@ -111,7 +106,7 @@
 						</select>
 						<div class="max_min">
 							<input id="min" type="number" name="min" placeholder="Minmum Price">
-							<input id="max" type="number" name="max" placeholder="Maximum Price">
+							<input id="max" type="number" name="max_min" placeholder="Maximum Price">
 						</div>
 						
 						<div class="view">

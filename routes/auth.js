@@ -90,7 +90,7 @@ router.get('/login', function(req, res, next) {
  * a message informing them of what went wrong.
  */
 router.post('/login/password', passport.authenticate('local', {
-  successReturnToOrRedirect: '/',
+  successReturnToOrRedirect: '/#house-list',
   failureRedirect: '/login',
   failureMessage: true
 }));

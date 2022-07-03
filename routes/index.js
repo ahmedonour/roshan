@@ -37,20 +37,15 @@ function fetchData(req, res, next) {
 }
 // search homes sell
 function findHomeforSell(req , res , next){
-  // const location = req.body.location
   const sell = "sell";
-  // "SELECT * FROM home WHERE four like ? AND location = ? AND price BETWEEN ? AND ?;"
   db.all("SELECT * FROM home WHERE four like ?", [
     sell,
-    // location,
-    // req.body.min,
-    // req.body.max
   ] ,function(err , rows){
     if (err) { return next(err);}
     var homes = rows.map(function(row) {
       return {
         id: row.id,
-        location: row.loc,
+        loc: row.loc,
         four: row.four,
         space: row.space,
         bathrooms: row.bathrooms,
@@ -59,8 +54,12 @@ function findHomeforSell(req , res , next){
         url: '/' + row.id
       }
     });
-    res.locals.homes = homes;
-   
+    //res.locals.homes = homes;
+    res.locals.homes = homes.filter(function(home){
+      return home.price <= req.body.max_buy , home.loc === req.body.location;
+    });
+    console.log(res.locals.homes)
+
     next();
   });
 };
@@ -85,12 +84,11 @@ function findHomeforRent(req , res , next){
         url: '/' + row.id
       }
     });
-	res.locals.rent = rent;
+	//res.locals.rent = rent;
   //filter rent by location, min and max price
     res.locals.fillters = rent.filter(function(home){
-      return home.loc === req.body.location;
+      return home.price <= req.body.max_min,  home.loc === req.body.location;
     });
-    console.log(res.locals.fillters)
     next();
   });
 
@@ -128,30 +126,45 @@ router.post('/addNewHouse', ensureLoggedIn ,fetchData,(req,res , next) => {
 });
 
 // Search For home
-router.get('/buyHome', ensureLoggedIn ,fetchData,findHomeforSell ,findHomeforRent , (req , res , next) => {
-  
+router.get('/buyHome', ensureLoggedIn ,fetchData,findHomeforSell ,findHomeforRent , function(req , res , next){
+ 	res.locals.homes = res.locals.homes.filter(function(home){
+      return home.price <= req.body.max_buy;
+	});
+	
+	  res.locals.filter = 'buyhome';
   res.render('buy', {user: req.user , namor: res.locals.homes , rent: res.locals.fillters});
   next();
 });
-router.post('/buyHome/fillter', ensureLoggedIn ,fetchData,findHomeforSell ,findHomeforRent , (req , res , next) => {
-  res.redirect('/buyHome');
+router.post('/buyHome/filters', ensureLoggedIn ,fetchData,findHomeforSell ,findHomeforRent , function(req , res , next){
+	res.locals.homes = res.locals.homes.filter(function(home){
+      return home.price <= req.body.max_buy;
+	});
+	
+	    res.locals.filter = 'buyhome';
+  res.render('buy' , {user: req.user ,namor: res.locals.homes, rent: res.locals.fillters});
   next();
 });
-
-router.post('/rentHome/filter', ensureLoggedIn, fetchData,findHomeforSell ,findHomeforRent,function(req , res){
-  res.redirect('/rentHome');
-  next();
-});
-
 
 router.get('/rentHome', ensureLoggedIn, fetchData,findHomeforSell ,findHomeforRent,function(req , res){
-	res.locals.rent = res.locals.rent.filter(function(home){
-      return home.loc === req.body.location;
-    });
-	res.locals.filter = 'rentHome';
+	res.locals.fillters = res.locals.fillters.filter(function(home){
+      return home.price <= req.body.max_min;
+	});
+	res.locals.filter = 'renthome';
   res.render('rent', {user: req.user ,namor: res.locals.homes, rent: res.locals.fillters});
   next();
 });
+
+
+router.post('/rentHome/filter', ensureLoggedIn, fetchData,findHomeforSell ,findHomeforRent,function(req , res){
+	res.locals.fillters = res.locals.fillters.filter(function(home){
+      return home.price <= req.body.max_min;
+    });
+	res.locals.filter = 'renthome';
+  res.render('rent', { user: req.user ,namor: res.locals.homes, rent: res.locals.fillters });
+  next();
+});
+
+
 
 module.exports = router;
   

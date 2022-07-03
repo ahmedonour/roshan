@@ -1,0 +1,157 @@
+#app.js
+
+The code starts by importing the http-errors module, which is used to create an error object.
+ Next, it imports express and path modules.
+ Express is a web framework that helps with routing HTTP requests through different methods such as GET, POST, PUT, DELETE etc.
+ The path module provides functions for finding files in your project directory or on the server's file system.
+ Next it creates a cookieParser instance using require('cookie-parser').
+ This will parse cookies from incoming requests and send them back to the client if they are set in the request headers.
+ It also sets up session middleware so that sessions can be persisted across multiple requests (e.g., when users navigate between pages).
+ Finally it includes csrf protection for form submissions so that CSRF attacks cannot happen without proper authentication credentials being submitted first
+ The code is used to create a new Express application.
+ The code creates an error handler that will be called when the HTTP request fails.
+ The code creates a middleware function for session management.
+ The code starts by requiring the connect-sqlite3 module.
+ This is a module that allows us to use SQLite as our database engine.
+ Next, we create an instance of SQLiteStore and pass it in as the session variable so that it can inherit from Session.
+ Store is then used to set up routes for our application using indexRouter and authRouter .
+ The app object is created next which will be used later on in this file when we start setting up Express middleware.
+ Finally, views are setup with ejs as the view engine and placed inside of a directory called views .
+ The code is a snippet of code that sets up the Express application.
+ var app = express(); app.set('views', path.join(__dirname, 'views')); app.set('view engine', 'ejs');
+ The code starts by requiring the pluralize module.
+ This is a library that provides methods for pluralizing words in English and other languages.
+ Next, it uses logger to log errors to the console.
+ It also sets up express so that it can use JSON as its response format and set up Express's URL encoding function with extended false .
+ It then uses cookieParser , which parses cookies into an object of key-value pairs.
+ The app will save cookies if they are unmodified, but not create them until something has been stored in them (saveUninitialized: false ).
+ Finally, it sets up session with secret 'keyboard cat' , resave: false , saveUninitialized: false , and a timeout of 10 minutes (reserve).
+ The code will use the express.json() middleware to parse incoming requests and responses, the cookieParser() middleware to handle cookies, the express.static() middleware to serve static files from a directory called public in the app's root directory, and finally it will use session() with some custom settings.
+ The code above is not supposed for production usage as it uses an unsecured secret key (keyboard cat) which can be compromised by attackers.
+
+#db.js
+
+The code is creating a database schema for the todos app.
+ It creates two tables: user and home.
+ The first table is where users are stored, and the second table is where homes are stored.
+ Next, it creates an initial user (username: alice, password: letmein) with a hashed password of letmein using crypto.pbkdf2Sync().
+ Then it inserts or ignores into the user table (alice) with her username and hashed password of letmein using crypto.pbkdf2Sync(), which uses salt as its input parameter in order to generate a unique hash value for each new entry in the database that will be used as their username/password combination on this site.
+ The code creates a database schema for the todos app.
+ It also creates an initial user (username: alice, password: letmein) and inserts or ignores into the user table.
+ 
+#index.js
+  The code starts by requiring the express library, which is used to create an Express app.
+ Next, it uses body-parser to parse incoming requests and send them as a JSON object.
+ The next line of code ensures that cookies are sent with every request so that they can be parsed later on in the app.
+ The last two lines of code require cookie-parser and csrf respectively for parsing cookies and CSRF protection respectively.
+ The code is used to set up the Express application.
+ The ensureLogIn() function ensures that the user has logged in before continuing with any other requests.
+ The csrf() function is used to prevent Cross-Site Request Forgery attacks on your site.
+ The db() object is required for this code and holds all of the data needed for the app.
+ The code starts by checking if the user is logged in.
+ If they are, then it will fetch all of their to-do items from the database and return them as a list.
+ function ensureLoggedIn() { var loggedIn = true; } The code starts by creating an object called ensureLoggedIn that has a boolean value called loggedIn which is set to true when the user logs in successfully.
+ The next line checks if this variable is false, meaning that the user isn't logged in yet.
+ If so, then it will call another function called logOut(), which will log out of Facebook and clear any cookies or other data associated with logging into Facebook on this computer before returning back to main().
+ The code is used to ensure that the user is logged in before fetching data from the database.
+ The code above fetches all of the rows from the home table where owner_id equals to req.user.id and stores them in an array called todos.
+ The code starts by defining a function called findHomeforRent.
+ This function takes two parameters: req and res.
+ The first parameter is the request object, which contains information about the user's search query.
+ The second parameter is an error-handling callback that will be invoked if there are any errors with the database queries or other problems with the request.
+ The next line of code defines a variable called rent as "rent".
+ This variable will hold all of the data returned from our database queries for homes for rent in San Francisco.
+ We then define a new anonymous function that calls db.all("SELECT * FROM home WHERE four like ?
+ ", [rent,] ,function(err , rows) {).
+ If there are no errors, this anonymous function returns true; otherwise it returns false and invokes next() to continue execution of our program flow without returning anything back to the client (in this case, it would return false because we don't have any results yet).
+ Next we create an array called rental using map().
+ In map(), we iterate over each row in our result set and assign them to variables based on their id values (the ids correspond to properties such as space, price, etc.).
+ Then we use these variables
+ The code is a function that searches for homes for rent.
+ The function takes in two parameters, req and res.
+ req is the HTTP request object and res is the response object.
+ The first thing that happens in this function is that it creates an empty array called rent.
+ This array will be used to store all of the data returned from our database query as well as any errors encountered during execution of the query.
+ Next, we create a new function called db.all which takes in three parameters: "SELECT * FROM home WHERE four like ?
+ ", [rent], and then executes our SQL statement on our database table named home with one parameter, rent, set to "rent".
+ This SQL statement returns all rows from our table where four equals
+ The code starts by defining a function called fetchData.
+ This is the function that will be executed when the user requests to see their data.
+ The code then defines an anonymous function which takes three parameters: req, res, and next.
+ The first parameter is a request object with properties like req.user, req.body, and req.querystring; the second parameter is an express router instance; and finally the third parameter is another anonymous function which takes two parameters: next() and fetchData().
+ The first thing this anonymous function does it call next(), which tells our application to continue processing after this point in time (i.e., not stop).
+ Next() also calls itself recursively so that each level of nested functions can execute before returning control back up to its caller (in this case, our main app).
+ Finally we define a new variable called filterRentByLocationAndPriceMinMax with value true or false depending on whether or not we want to filter out homes based on price range or location only respectively for rent analysis purposes later in our app's lifecycle (see below).
+ Next we create an instance of express-locals using localStorage as well as setting fillters equal to rent filtered by location only for
+ The code will fetch the data from the database and render it to the client.
+ The code above has two functions, one is for GET requests and other is for POST requests.
+ The code is a function that takes in three parameters: ensureLoggedIn, fetchData, and next.
+ The first parameter ensures the user is logged in before continuing with the request.
+ The second parameter is called when data has been fetched from the database.
+ It will be passed an object containing all of the information about what was just inserted into it.
+ The third parameter is called if there are any errors during insertion or retrieval of data from the database.
+ The code starts by declaring two variables: db and req which will hold references to both MongoDB and Express respectively.
+ Next, we have a function that inserts new records into our home table using req as its first argument (the user's id) and then passing on to each subsequent argument (location, for, space, bathrooms/bedrooms/price).
+ If there are any errors during this process then it returns console error messages back to us so we can see them easily without having to check every single line of code for errors ourselves!
+ The code is a call to the function ensureLoggedIn that is used to check if the user has logged in.
+ If they have, then it will return true and the code continues on with its execution.
+ If the user does not have an account, then it will create one for them and continue on with its execution.
+ If there was no error, then the code continues on with its execution by calling fetchData which will retrieve data from a database table called home and insert that data into another table called users.
+ The code starts by defining a function called ensureLoggedIn.
+ This ensures that the user is logged in before continuing with the rest of the code.
+ Next, it defines a function called fetchData which will be used to retrieve data from our database and return it as JSON.
+ The next function defined is findHomeforSell which looks for homes that are available for sale and returns them as JSON.
+ The last function defined is findHomeforRent which looks for homes that are available for rent and returns them as JSON.
+ The first thing this code does is define a new route '/buyHome' which will be used to search through our database of houses looking for one that meets certain criteria (price).
+ It then calls another function called ensureLoggedIn, passing in an argument 'fetchData'.
+ This ensures that we're only searching through the houses if we're logged in so we don't accidentally show someone else's house or something they can't see without logging into their account first.
+ Then it calls another new function called fetchData, passing in an argument 'findHomesForSell'.
+ This retrieves all of the houses on our site currently listed on sale and passes them back to us as JSON using res.locals object properties
+ The code will look for homes that are within the price range of the request.
+ The code above will filter through all the properties in the database and return only those that have a price less than or equal to what is requested.
+ The code starts by defining a function called ensureLoggedIn.
+ This ensures that the user is logged in before continuing with the rest of the code.
+ Next, it defines two functions: fetchData and findHomeforSell.
+ The first function fetches data from an external source (the server) and saves it to a variable called res.locals; this is done using the router's post method on '/buyHome/filters'.
+ The second function finds homes for sale based on filters set by users in their profile page (e.g., price).
+ It uses filter() to return only those homes that meet certain criteria, which are defined as part of its definition of findHomesForSell().
+ The next section starts with defining a new route called 'buy' which will be used when someone visits /buyHome/.
+ Then it defines two variables: namor and rent, both being strings containing text values assigned by users during signup or later on their profile page under "fillers".
+ Finally, it renders out some HTML content using render(), passing in these variables as parameters so they can be displayed within the template file buy-template-file.html found at app/templates/buy-template-file.html
+ The code is used to filter homes that are available for purchase.
+ 
+ #Auth.js
+  The code starts by requiring the `passport` module.
+ This is a library that allows us to use passport authentication strategies in our application.
+ The code then creates an instance of the `LocalStrategy` class, which is what we will be using for password authentication.
+ Next, it sets up some configuration options for this strategy: - The first option is called "usernameField" and defines where users enter their username when they sign up or login with this strategy.
+ - The second option is called "passwordField" and defines where users enter their password when they sign up or login with this strategy.
+ - The third option is called "rememberMe".
+ If set to true, the user's session cookie will remember them after they log out so that they don't have to reenter their credentials next time they visit your site (this can also be done through browser cookies).
+ Finally, it starts listening on port 3000 for incoming requests from clients who want to authenticate themselves via passport.
+ The code is a snippet of code that configures the passport-local authentication strategy.
+ The code does not mention anything about "password" or "username".
+ It only mentions "passport".
+ The code parses the username and password from the request, calls a function called verify(), which queries the database for the user record and verifies the password by hashing the password supplied by the user and comparing it to hashed passwords stored in a database.
+ If they match, then authentication is successful; otherwise not.
+ The code uses the LocalStrategy which is a strategy that does not use the database.
+ The code also calls the verify function, which queries the database for the user record and verifies the password by hashing the password supplied by the user and comparing it to hashed password stored in the database.
+ If the comparison succeeds, then authentication succeeds; otherwise, not.
+ The code starts by creating a new session object.
+ var session = crypto.createSession('my-secret-password'); The code then gets the user's id from the database and assigns it to a variable called rowid.
+ db.get('SELECT rowid AS id, * FROM user WHERE username = ?
+ ', [ username ], function(err, row) { if (err) { return cb(err); } if (!row) { return cb(null, false, { message: 'Incorrect username or password.'
+ }); } crypto.pbkdf2(password, row.salt, 310000, 32, 'sha256', function(err, hashedPassword) { if (err) { return cb(err); } if (!crypto.timingSafeEqual(row.hashed_password, hashedPassword)) { return cb(null, false ,{ message: 'Incorrect username or password.
+ '});} return cb(); }); });
+ The code is a function that will be called when the user successfully logs in.
+ The function will check if the username and password are correct, then it will call another function to encrypt the password using PBKDF2.
+ The code starts by defining a function called `serializeUser` that takes in the user ID and username.
+ The serializeUser function returns an object with two properties: first is the user's ID, and second is their username.
+ The code then creates a new instance of the app using this information from the serializeUser function.
+ It also sets up some variables for later use, such as session and current_user .
+ Next, it defines a variable called request , which will be used to store all incoming requests made by users on our website.
+ Then it creates another variable called response , which will be used to store all outgoing responses sent back to users when they interact with our website.
+ Finally, it defines a variable named login_status , which stores whether or not we are currently logged into our account (true/false).
+ The code is a good example of how to use the session.
+ Session The Session object is used to store information about the user's login session.
+ It can be accessed using the following code: session = new Session();

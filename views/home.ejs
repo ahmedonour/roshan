@@ -10,86 +10,113 @@
 		<link rel="manifest" href="/manifest.json">
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 		<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
 		<script src="https://kit.fontawesome.com/f3c7bd6f07.js" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 		<link rel="shortcut icon" href="/img/favicon-0.png" type="image/x-icon">
 	</head>
 	<body>
-		<section class="hero main-scroll">
-			<header>
-				<img src="/img/Roshan-Logo.png" alt="">
-				<input type="checkbox" name="check" id="check">
-				<label for="check">
-					<i class="fas fa-ellipsis-v"></i>
-					<!-- <i class="fa-solid fa-bars-staggered"></i> -->
-				</label>
-				<div class="navbtn">
+		<div class="loader">
+			<div></div>
+			
+				<h1 class="animate__animated animate__infinite animate__heartBeat logo-loader">Roshan</h1>
+			
+		</div>
+		
+			<section class="hero main-scroll">
+				<header>
+					<img src="/img/Roshan-Logo.png" alt="">
+					<input type="checkbox" name="check" id="check">
 					<label for="check">
-						<i class="fa-regular fa-circle-xmark"></i>
+						<i class="fas fa-ellipsis-v"></i>
+						<!-- <i class="fa-solid fa-bars-staggered"></i> -->
 					</label>
-					<a class="button" href="/login">Login</a>  
-					<a class="button" href="#contactus">Contact Us</a>
+					<div class="navbtn">
+						<label for="check">
+							<i class="fa-regular fa-circle-xmark"></i>
+						</label>
+						<a class="button" href="/login">Login</a>
+						<a class="button" href="#contactus">Contact Us</a>
+					</div>
+				</header>
+				<div class="content">
+					<iframe src='https://my.spline.design/miniroomcopy-1be19337203bf589e316f65161b6f1a6/' frameborder='0' width='100%' height='100%'></iframe>
+					<div class="centerDiv">
+						<h1 class="animate__animated animate__backInLeft animate__delay-1s animate__fadeIn">Your Dream Home is in Your Hand</h1>
+						<p class="animate__animated animate__backInRight">You have no time to search for a home but still thinking about time you will lose in searching for your dream home don't worry you are in the right place </p>
+						
+							<button class="animate__animated animate__repeat-3 animate__heartBeat"><a href="/signup">Get Start</a></button>
+						
+						<a href="#readmore">Read More  <i class="fa-solid fa-angle-down"></i></a>
+					</div>
 				</div>
-			</header>
-			<div class="content">
-				<iframe src='https://my.spline.design/miniroomcopy-1be19337203bf589e316f65161b6f1a6/' frameborder='0' width='100%' height='100%'></iframe>
-				<div class="centerDiv">
-					<h1>Your Dream Home is in Your Hand</h1>
-					<p>You have no time to search for a home but still thinking about time you will lose in searching for your dream home don't worry you are in the right place </p>					
-					<button href="/signup">Get Start</button>
-					<a href="#readmore">Read More  <i class="fa-solid fa-angle-down"></i></a>
+			</section>
+			<section class="mid-section main-scroll" id="readmore">
+				<div class="about-us animate__animated animate__slideInRight">
+					<div class="horizantal">
+						<h1>No Broker's No more !</h1>
+						<p>
+							We reduce buyer search Cost that's will become  nothing compare to the brokerage , The buyer will conduct the search and will have no need for a broker.
+						</p>
+					</div>
+					<img src="https://picsum.photos/id/1076/300/600">
 				</div>
-			</div>	
-		</section>
-		<section class="mid-section main-scroll" id="readmore">
-			<div class="about-us">
-				<h1>No Broker's No more !</h1>
-				<p>
-					We reduce buyer search Cost that's will become  nothing compare to the brokerage , The buyer will conduct the search and will have no need for a broker.
-				</p>
-				<img src="https://picsum.photos/id/1076/200">
-			</div>
-			<div class="about-us">
-				<h1>Why You Don't Need a Broker</h1>
-				<p>
-					if you and the "Seller/buyer" can sit at your's computer and gather enough information about each other with just a click why you need a broker then?
-				</p>
-				<img src="https://picsum.photos/id/1048/200">
-			</div>
-			<div class="about-us">
-				<h1>Reducing The Wasting Time And Effort</h1>
-				<p>
-					In the process of searching for the home that you live the home of your kid's and wife , or evane your first home you will waste allot of time and effrot for sure , with this site we save your time and effort , and the next thing that you now that you are in your new home sleeping.
-				</p>
-				<img src="https://picsum.photos/id/101/200">
-			</div>
-		</section>
-		<footer class="info main-scroll" id="contactus">
-			<h1>Contact Us</h1>
-			<div class="center-footer">
-				
-				<div class="contact-info">
-					<h4>Ahmed Suliman</h4>
-					<h4>Phone : +249 92 513 8799</h4>
-					<h4>Email : ahmedonour.49@gmail.com</h4>
+				<div class="about-us">
+					<div class="horizantal">
+						<h1>Why You Don't Need a Broker</h1>
+						<p>
+							if you and the "Seller/buyer" can sit at your's computer and gather enough information about each other with just a click why you need a broker then?
+						</p>
+					</div>
+					<img src="https://picsum.photos/id/1048/300/600">
 				</div>
-				<div class="contact-info">
-				<h4>Mohand Alaaldein </h4>
-				<h4>Phone : +249 11 6555 350</h4>
-				<h4>Email :mohnadala8@gmail.com</h4>
+				<div class="about-us">
+					<div class="horizantal">
+						<h1>Reducing The Wasting Time And Effort</h1>
+						<p>
+							In the process of searching for the home that you live the home of your kid's and wife , or evane your first home you will waste allot of time and effrot for sure , with this site we save your time and effort , and the next thing that you now that you are in your new home sleeping.
+						</p>
+					</div>
+					<img src="https://picsum.photos/id/101/300/600">
 				</div>
-				<div class="contact-info">
-					<h4>Ahmed Mohamad</h4>
-					<h4>Phone : +249 92 067 8164</h4>
-					<h4>Email : ahmedmoham998@gmail.com</h4>
+			</section>
+			<footer class="info main-scroll" id="contactus">
+				<h1>Contact Us</h1>
+				<div class="center-footer">
+			
+					<div class="contact-info">
+						<h4>Ahmed Suliman</h4>
+						<h4>Phone : +249 92 513 8799</h4>
+						<h4>Email : ahmedonour.49@gmail.com</h4>
+					</div>
+					<div class="contact-info">
+					<h4>Mohand Alaaldein </h4>
+					<h4>Phone : +249 11 6555 350</h4>
+					<h4>Email :mohnadala8@gmail.com</h4>
+					</div>
+					<div class="contact-info">
+						<h4>Ahmed Mohamad</h4>
+						<h4>Phone : +249 92 067 8164</h4>
+						<h4>Email : ahmedmoham998@gmail.com</h4>
+					</div>
 				</div>
-			</div>
-			<div class="copy-right">
-				&copy; 2020 - Onodev Company
-			</div>
-		</footer>
+				<div class="copy-right">
+					&copy; 2020 - Onodev Company
+				</div>
+			</footer>
+		
+		
+
+			<script>
+  				$(window).on('load',function(){
+      				$('.loader').fadeOut(1000);
+      				$('.contents').fadeln(1000);
+  				});
+                  
+		</script>
 		<script>
 			if ('serviceWorker' in navigator){
 				navigator.serviceWorker.register('/service-worker.js');
