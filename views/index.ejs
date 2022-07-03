@@ -70,6 +70,7 @@
 				</div>
 			<div class="house-list" id="buy">
 				<form action="/buyHome/filters" method="post">
+					<h1>Rent</h1>
 					<label for="location">Chose One Of Them</label>
 					<select name="location" id="location">
 						<option value="">One Choice</option>
@@ -81,19 +82,21 @@
 						<option value="Ombada">Ombada</option>
 						<option value="Karary">Karary</option>
 					</select>
+					<label for="max_min">Your Range</label>
 					<div class="max_min">
-						<label for="max_min">Your Range</label>
+						
 						<input id="min" type="number" name="min" placeholder="Minmum Price">
 						<input id="max" type="number" name="max_buy" placeholder="Maximum Price">
 					</div>
 					<input type="hidden" name="_csrf" value="<%= csrfToken %>">
-					<button type="submit" >Go</button>
+					<input type="submit" value="Search">
 				</form>
 			</div>
 				<div class="house-list" id="rent">
-					<h1>Rent</h1>
+					
 					<form action="/rentHome/filter" method="post">
-
+						<h1>Rent</h1>
+						<label for="location">Chose One Of Them</label>
 						<select name="location" id="location">
 							<option value="">One Choice</option>
 							<option value="Khartuom">Khartuom</option>
@@ -104,6 +107,7 @@
 							<option value="Ombada">Ombada</option>
 							<option value="Karary">Karary</option>
 						</select>
+						<label for="max_min">Your Range</label>
 						<div class="max_min">
 							<input id="min" type="number" name="min" placeholder="Minmum Price">
 							<input id="max" type="number" name="max_min" placeholder="Maximum Price">
@@ -114,7 +118,7 @@
 					
 						</div>
 						<input type="hidden" name="_csrf" value="<%= csrfToken %>">
-						<button type="submit" >Go</button>
+						<input type="submit" value="Search">
 					</form>
 
 				</div>

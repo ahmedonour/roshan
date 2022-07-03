@@ -281,6 +281,52 @@ th{
 	 background-color: var(--clr-green);
 	 cursor: pointer;
 }
+#buy :is(select, input){
+	width: 15rem;
+	 height: 3rem;
+	 font-size: 1rem;
+	 border-radius: 5rem;
+	 padding: 1rem;
+	 margin-bottom: 1rem;
+	 border: none;
+	 box-shadow: var(--shadow-input);
+	 outline: none;
+	 transition: all 550ms ease-in-out;
+}
+#buy input[type = submit]{
+	text-align: center;
+   color: var(--clr-dark);
+   font-family: var(--playfair-display);
+}
+#buy input[type = submit]:hover{
+	color: var(--clr-white);
+	font-family: var(--playfair-display);
+	background-color: var(--clr-green);
+	cursor: pointer;
+}
+#rent :is(select, input){
+	width: 15rem;
+	 height: 3rem;
+	 font-size: 1rem;
+	 border-radius: 5rem;
+	 padding: 1rem;
+	 margin-bottom: 1rem;
+	 border: none;
+	 box-shadow: var(--shadow-input);
+	 outline: none;
+	 transition: all 550ms ease-in-out;
+}
+#rent input[type = submit]{
+	text-align: center;
+   color: var(--clr-dark);
+   font-family: var(--playfair-display);
+}
+#rent input[type = submit]:hover{
+	color: var(--clr-white);
+	font-family: var(--playfair-display);
+	background-color: var(--clr-green);
+	cursor: pointer;
+}
  @media only screen  and (min-width:768px) {
 	 body{
 		 background-color: var(--clr-white-dark) ;
@@ -335,6 +381,12 @@ th{
 
 }
 #insertHome :is(input,select){
+	width: 30rem;
+}
+#buy :is(select, input){
+	width: 30rem;
+}
+#rent :is(select, input){
 	width: 30rem;
 }
  }
